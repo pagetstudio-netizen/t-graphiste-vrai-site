@@ -138,7 +138,7 @@ button { cursor: pointer; }
 .eyebrow { display: inline-flex; align-items: center; gap: 9px; font-family: var(--app-font-mono); text-transform: uppercase; letter-spacing: .12em; font-size: 10px; font-weight: 500; }
 .eyebrow::before { content: ''; width: 28px; height: 2px; background: #e00815; }
 .display { font-family: 'Space Grotesk', sans-serif; letter-spacing: -.07em; line-height: .93; }
-.hero { min-height: 100dvh; padding-top: 120px; display: flex; flex-direction: column; justify-content: center; background: #e00815; color: #fffdf6; position: relative; }
+.hero { min-height: 100dvh; padding: 120px 24px 70px; display: flex; flex-direction: column; justify-content: center; background: #e00815; color: #fffdf6; position: relative; }
 .hero::before { content: ''; position: absolute; inset: 72px 0 0; opacity: .25; background-image: radial-gradient(circle, #fffdf6 1px, transparent 1px); background-size: 26px 26px; mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 70%); }
 .hero-grid { position: relative; z-index: 1; max-width: 1200px; width: 100%; margin: 0 auto; }
 .hero-kicker { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; font-family: var(--app-font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }

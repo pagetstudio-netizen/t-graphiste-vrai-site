@@ -86,6 +86,14 @@ function usePageMeta(title: string, description: string) {
     document.title = `${title} — Pionnier Créatif`;
     const descriptionTag = document.querySelector('meta[name="description"]');
     if (descriptionTag) descriptionTag.setAttribute('content', description);
+    const socialTitle = document.querySelector('meta[property="og:title"]');
+    if (socialTitle) socialTitle.setAttribute('content', `${title} — Pionnier Créatif`);
+    const socialDescription = document.querySelector('meta[property="og:description"]');
+    if (socialDescription) socialDescription.setAttribute('content', description);
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) twitterTitle.setAttribute('content', `${title} — Pionnier Créatif`);
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDescription) twitterDescription.setAttribute('content', description);
   }, [title, description]);
 }
 
