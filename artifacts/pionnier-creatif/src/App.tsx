@@ -1,6 +1,6 @@
 import { useEffect, useState, type FormEvent, type MouseEvent, type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ArrowDownRight, ArrowLeft, ArrowUpRight, Check, FilePlus2, Instagram, Linkedin, Mail, Menu, MessageCircle, Search, X } from 'lucide-react';
+import { ArrowDownRight, ArrowLeft, ArrowUpRight, Check, FilePlus2, Mail, Menu, MessageCircle, Search, X } from 'lucide-react';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -8,6 +8,9 @@ import NotFound from '@/pages/not-found';
 import { Link, Route, Switch, Router as WouterRouter, useLocation, useParams } from 'wouter';
 
 const queryClient = new QueryClient();
+const CONTACT_EMAIL = 'medkoyi1@gmail.com';
+const WHATSAPP_LINK = 'https://wa.me/22897899364';
+const TIKTOK_LINK = 'https://www.tiktok.com/@md.koyi.graphiste?is_from_webapp=1&sender_device=pc';
 
 type Project = {
   slug: string;
@@ -143,11 +146,11 @@ function Footer() {
           <p className="footer-copy">Direction artistique indépendante pour celles et ceux qui veulent faire les choses autrement.</p>
         </div>
         <div className="footer-copy">
-          <p>Paris · France<br />Disponible pour les projets qui comptent.</p>
-          <p><a href="mailto:bonjour@pionniercreatif.fr" data-testid="link-footer-email">bonjour@pionniercreatif.fr</a></p>
+          <p>Disponible partout<br />pour les projets qui comptent.</p>
+          <p><a href={`mailto:${CONTACT_EMAIL}`} data-testid="link-footer-email">{CONTACT_EMAIL}</a><br /><a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" data-testid="link-footer-whatsapp">WhatsApp</a></p>
         </div>
         <div className="footer-copy">
-          <p><a href="https://www.instagram.com" target="_blank" rel="noreferrer" data-testid="link-footer-instagram">Instagram</a><br /><a href="https://www.linkedin.com" target="_blank" rel="noreferrer" data-testid="link-footer-linkedin">LinkedIn</a></p>
+          <p><a href={TIKTOK_LINK} target="_blank" rel="noreferrer" data-testid="link-footer-tiktok">TikTok</a></p>
         </div>
       </div>
       <div className="footer-bottom">
@@ -181,7 +184,7 @@ function HomePage() {
     <>
       <section className="hero" data-testid="section-hero">
         <div className="hero-grid">
-          <div className="hero-kicker reveal"><span>Studio indépendant · Paris</span><span>© 2024</span></div>
+          <div className="hero-kicker reveal"><span>Studio indépendant</span><span>© 2024</span></div>
           <h1 className="hero-title display reveal delay-1"><span>Je crée</span><span className="outline">des chemins</span><span>visuels.</span></h1>
           <div className="hero-bottom reveal delay-2">
             <p className="hero-copy">Je transforme les idées en identités visuelles qui ont du sens.</p>
@@ -359,13 +362,13 @@ function PortraitBlock({ label, detail }: { label: string; detail: string }) {
 function AboutPreview() {
   return <section className="section" id="a-propos" data-testid="section-about">
     <div className="section-inner about-layout"><PortraitBlock label="À propos / 04" detail="En mouvement depuis 2015" />
-      <div className="about-copy"><span className="eyebrow">04 / À propos</span><p>Je suis la personne derrière Pionnier Créatif. J’aime les idées nettes, les détails qui décalent et les marques qui avancent.</p><p className="small-copy">Direction artistique, design graphique et stratégie de marque : je travaille en solo ou avec une équipe choisie selon chaque terrain de jeu. Mon rôle est de faire émerger ce qui vous appartient déjà.</p><div className="about-meta"><div><span className="meta-label">Base</span><span className="meta-value">Paris, partout</span></div><div><span className="meta-label">Terrain</span><span className="meta-value">Culture · lifestyle · impact</span></div></div><div style={{ marginTop: '30px' }}><ButtonLink href="/a-propos" variant="ghost">En savoir plus</ButtonLink></div></div>
+      <div className="about-copy"><span className="eyebrow">04 / À propos</span><p>Je suis la personne derrière Pionnier Créatif. J’aime les idées nettes, les détails qui décalent et les marques qui avancent.</p><p className="small-copy">Direction artistique, design graphique et stratégie de marque : je travaille en solo ou avec une équipe choisie selon chaque terrain de jeu. Mon rôle est de faire émerger ce qui vous appartient déjà.</p><div className="about-meta"><div><span className="meta-label">Disponibilité</span><span className="meta-value">Partout, à distance</span></div><div><span className="meta-label">Terrain</span><span className="meta-value">Culture · lifestyle · impact</span></div></div><div style={{ marginTop: '30px' }}><ButtonLink href="/a-propos" variant="ghost">En savoir plus</ButtonLink></div></div>
     </div>
   </section>;
 }
 
 function ContactSection({ showForm = true }: { showForm?: boolean }) {
-  return <section className="section dark-section" id="contact" data-testid="section-contact"><div className="section-inner contact-grid"><div><span className="eyebrow">05 / Le prochain pas</span><h2 className="contact-title">On ouvre une <em>nouvelle voie ?</em></h2><p className="contact-note">Un projet en tête, un virage à prendre ou simplement l’envie de confronter une idée ? Racontez-moi le début de l’histoire.</p><div className="contact-details"><a className="contact-detail" href="mailto:bonjour@pionniercreatif.fr" data-testid="link-contact-email"><span className="detail-icon"><Mail size={15} /></span>bonjour@pionniercreatif.fr</a><a className="contact-detail" href="https://wa.me/33600000000" target="_blank" rel="noreferrer" data-testid="link-contact-whatsapp"><span className="detail-icon"><MessageCircle size={15} /></span>WhatsApp · +33 6 00 00 00 00</a></div></div>{showForm && <ContactForm />}</div></section>;
+  return <section className="section dark-section" id="contact" data-testid="section-contact"><div className="section-inner contact-grid"><div><span className="eyebrow">05 / Le prochain pas</span><h2 className="contact-title">On ouvre une <em>nouvelle voie ?</em></h2><p className="contact-note">Un projet en tête, un virage à prendre ou simplement l’envie de confronter une idée ? Racontez-moi le début de l’histoire.</p><div className="contact-details"><a className="contact-detail" href={`mailto:${CONTACT_EMAIL}`} data-testid="link-contact-email"><span className="detail-icon"><Mail size={15} /></span>{CONTACT_EMAIL}</a><a className="contact-detail" href={WHATSAPP_LINK} target="_blank" rel="noreferrer" data-testid="link-contact-whatsapp"><span className="detail-icon"><MessageCircle size={15} /></span>WhatsApp · +228 97 89 93 64</a></div></div>{showForm && <ContactForm />}</div></section>;
 }
 
 type FormState = { name: string; email: string; type: string; objective: string; budget: string; deadline: string; message: string };
@@ -375,8 +378,25 @@ function ContactForm() {
   const [attachment, setAttachment] = useState('');
   const [form, setForm] = useState<FormState>({ name: '', email: '', type: '', objective: '', budget: '', deadline: '', message: '' });
   const update = (key: keyof FormState, value: string) => setForm((current) => ({ ...current, [key]: value }));
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setSubmitted(true); };
-  if (submitted) return <div className="contact-form success-state" data-testid="status-form-success"><span className="success-mark"><Check size={25} /></span><h3>Bien reçu.</h3><p>Votre demande est enregistrée dans cette démo. Dans la vraie vie, je vous répondrais sous 2 jours ouvrés avec quelques premières pistes.</p><button className="text-button" type="button" onClick={() => { setSubmitted(false); setForm({ name: '', email: '', type: '', objective: '', budget: '', deadline: '', message: '' }); setAttachment(''); }} data-testid="button-reset-form">Envoyer une autre demande</button></div>;
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const message = [
+      'Bonjour, je souhaite parler de mon projet avec Pionnier Créatif.',
+      '',
+      `Nom / entreprise : ${form.name}`,
+      `Email ou WhatsApp : ${form.email}`,
+      `Type de projet : ${form.type}`,
+      `Budget indicatif : ${form.budget || 'À préciser'}`,
+      `Objectif : ${form.objective || 'À préciser'}`,
+      `Deadline souhaitée : ${form.deadline || 'À préciser'}`,
+      '',
+      `Contexte : ${form.message}`,
+      attachment ? `Référence / brief : ${attachment}` : '',
+    ].filter(Boolean).join('\n');
+    window.open(`${WHATSAPP_LINK}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+    setSubmitted(true);
+  };
+  if (submitted) return <div className="contact-form success-state" data-testid="status-form-success"><span className="success-mark"><Check size={25} /></span><h3>WhatsApp est ouvert.</h3><p>Votre message a été préparé avec les informations du formulaire. Vous pouvez l’envoyer directement dans la conversation.</p><button className="text-button" type="button" onClick={() => { setSubmitted(false); setForm({ name: '', email: '', type: '', objective: '', budget: '', deadline: '', message: '' }); setAttachment(''); }} data-testid="button-reset-form">Préparer un autre message</button></div>;
   return <form className="contact-form" onSubmit={handleSubmit} data-testid="form-contact"><p className="form-intro">Parlez-moi de votre projet.</p>
     <div className="form-row"><div className="field"><label htmlFor="name">Nom / entreprise *</label><input id="name" required value={form.name} onChange={(event) => update('name', event.target.value)} placeholder="Votre nom" data-testid="input-name" /></div><div className="field"><label htmlFor="email">Email ou WhatsApp *</label><input id="email" required value={form.email} onChange={(event) => update('email', event.target.value)} placeholder="Pour vous répondre" data-testid="input-email" /></div></div>
     <div className="form-row"><div className="field"><label htmlFor="type">Type de projet *</label><select id="type" required value={form.type} onChange={(event) => update('type', event.target.value)} data-testid="select-project-type"><option value="">Choisir une piste</option><option>Identité visuelle</option><option>Direction artistique</option><option>Campagne</option><option>Autre / à définir</option></select></div><div className="field"><label htmlFor="budget">Budget indicatif</label><select id="budget" value={form.budget} onChange={(event) => update('budget', event.target.value)} data-testid="select-budget"><option value="">À préciser</option><option>2 000 — 5 000 €</option><option>5 000 — 10 000 €</option><option>10 000 € et plus</option></select></div></div>
