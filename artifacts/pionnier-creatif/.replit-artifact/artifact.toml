@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Pionnier Créatif"
+description = "Portfolio éditorial de Pionnier Créatif, graphiste designer spécialisé en branding, identité visuelle et direction artistique."
+version = "1.0.0"
+id = "artifacts/pionnier-creatif"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24944
+
+[services.development]
+run = "pnpm --filter @workspace/pionnier-creatif run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/pionnier-creatif", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/pionnier-creatif/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24944"
+BASE_PATH = "/"
