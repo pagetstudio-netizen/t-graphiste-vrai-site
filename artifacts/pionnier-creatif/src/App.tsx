@@ -257,6 +257,67 @@ function ProjectCard({ project }: { project: Project }) {
   );
 }
 
+function ProjectVisual({ project }: { project: Project }) {
+  return (
+    <span className={`project-gallery-art ${project.tone}`} aria-hidden="true">
+      <span className="gallery-art-meta">{project.number} / {project.year}</span>
+      <span className="gallery-art-client">{project.client}</span>
+      <span className="gallery-art-frame frame-one" />
+      <span className="gallery-art-frame frame-two" />
+      <span className="gallery-art-orbit" />
+      <span className="gallery-art-title">{project.name}</span>
+    </span>
+  );
+}
+
+function ProjectGalleryCard({ project, onOpen }: { project: Project; onOpen: (project: Project) => void }) {
+  return (
+    <article className={`project-gallery-card ${project.tone}`}>
+      <button type="button" className="project-gallery-trigger" onClick={() => onOpen(project)} data-testid={`button-gallery-${project.slug}`}>
+        <ProjectVisual project={project} />
+        <span className="project-gallery-body">
+          <span className="project-gallery-category">{project.category}</span>
+          <span className="project-gallery-name">{project.name}</span>
+          <span className="project-gallery-action">Voir le visuel <ArrowUpRight size={17} /></span>
+        </span>
+      </button>
+    </article>
+  );
+}
+
+function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [onClose]);
+
+  return (
+    <div className="project-modal-backdrop" role="presentation" onMouseDown={(event) => { if (event.currentTarget === event.target) onClose(); }}>
+      <div className="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+        <button type="button" className="project-modal-close" onClick={onClose} aria-label="Fermer le visuel" data-testid="button-close-project-modal">
+          <X size={20} />
+        </button>
+        <div className="project-modal-visual"><ProjectVisual project={project} /></div>
+        <div className="project-modal-copy">
+          <span className="eyebrow">{project.number} / {project.category}</span>
+          <h2 id="project-modal-title">{project.name}</h2>
+          <p>{project.summary}</p>
+          <div className="project-modal-tags">{project.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div>
+          <Link href={`/projets/${project.slug}`} className="btn btn-red" onClick={onClose}>Voir l’étude de cas <ArrowUpRight size={16} /></Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ProjectsPreview() {
   return <section className="section dark-section" id="projets" data-testid="section-projects">
     <div className="section-inner">
@@ -315,7 +376,8 @@ function ContactForm() {
 
 function ProjectsPage() {
   usePageMeta('Projets', 'Découvrez les identités visuelles, campagnes et systèmes de marque conçus par Pionnier Créatif.');
-  return <><section className="case-hero" style={{ background: '#111' }}><div className="case-hero-inner"><span className="eyebrow">Projets / sélection</span><h1 className="display">Les idées<br /><span style={{ color: '#f29200' }}>prennent forme.</span></h1><p>Des mini case studies pour voir ce qui se passe entre le brief et la marque que l’on retient.</p></div></section><section className="section" data-testid="page-projects"><div className="section-inner"><div className="project-list">{projects.map((project) => <ProjectCard key={project.slug} project={project} />)}</div></div></section></>;
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  return <><section className="case-hero" style={{ background: '#111' }}><div className="case-hero-inner"><span className="eyebrow">Projets / sélection</span><h1 className="display">Les idées<br /><span style={{ color: '#f29200' }}>prennent forme.</span></h1><p>Des mini case studies pour voir ce qui se passe entre le brief et la marque que l’on retient.</p></div></section><section className="section project-gallery-section" data-testid="page-projects"><div className="section-inner"><div className="project-gallery-grid">{projects.map((project) => <ProjectGalleryCard key={project.slug} project={project} onOpen={setSelectedProject} />)}</div></div></section>{selectedProject && <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />}</>;
 }
 
 function ServicesPage() {
