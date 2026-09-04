@@ -202,8 +202,12 @@ button { cursor: pointer; }
 .project-footer { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; margin-top: 30px; text-align: center; }
 .project-tags { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; max-width: 320px; margin-inline: auto; }
 .tag { padding: 5px 8px; border: 1px solid currentColor; font-family: var(--app-font-mono); font-size: 9px; text-transform: uppercase; }
-.circle-arrow { display: inline-flex; width: 43px; height: 43px; align-items: center; justify-content: center; border: 1px solid currentColor; border-radius: 50%; transition: transform .25s ease, background .25s ease; }
-.project-card:hover .circle-arrow { transform: rotate(-45deg); background: currentColor; color: #111; }
+.circle-arrow { display: inline-flex; width: 43px; height: 43px; align-items: center; justify-content: center; border: 1px solid currentColor; border-radius: 50%; transition: transform .25s ease, background-color .25s ease, border-color .25s ease, color .25s ease, box-shadow .25s ease; }
+.project-card:hover .circle-arrow,
+.project-card:focus-visible .circle-arrow,
+.project-card:active .circle-arrow,
+.project-card.is-opening .circle-arrow { transform: rotate(-45deg) scale(1.08); background: #111; border-color: #111; color: #fffdf6; box-shadow: 0 0 0 7px rgba(17,17,17,.14); }
+.project-card.is-opening .project-shape { transform: rotate(50deg) scale(1.08); }
 .view-all { display: inline-flex; align-items: center; gap: 12px; margin-top: 34px; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; border-bottom: 2px solid #e00815; padding-bottom: 7px; }
 
 .services-grid { display: grid; gap: 1px; border: 1px solid #111; background: #111; margin-top: 46px; }

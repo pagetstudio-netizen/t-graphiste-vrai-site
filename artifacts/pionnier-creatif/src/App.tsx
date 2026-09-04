@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useState, type FormEvent, type MouseEvent, type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ArrowDownRight, ArrowLeft, ArrowUpRight, Check, FilePlus2, Instagram, Linkedin, Mail, Menu, MessageCircle, X } from 'lucide-react';
 import { ErrorBoundary } from '@/components/error-boundary';
@@ -233,8 +233,20 @@ function HomePage() {
 }
 
 function ProjectCard({ project }: { project: Project }) {
+  const [, navigate] = useLocation();
+  const [opening, setOpening] = useState(false);
+  const projectHref = `/projets/${project.slug}`;
+
+  const openProject = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    if (opening) return;
+    setOpening(true);
+    window.setTimeout(() => navigate(projectHref), 180);
+  };
+
   return (
-    <Link href={`/projets/${project.slug}`} className={`project-card ${project.tone}`} data-testid={`card-project-${project.slug}`}>
+    <Link href={projectHref} onClick={openProject} className={`project-card ${project.tone} ${opening ? 'is-opening' : ''}`} data-testid={`card-project-${project.slug}`}>
       <div className="project-top"><span>{project.number} / {project.year}</span><span>{project.client}</span></div>
       <div className="project-shape" aria-hidden="true" />
       <div className="project-footer">
