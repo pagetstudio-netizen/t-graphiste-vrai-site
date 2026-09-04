@@ -290,10 +290,10 @@ button { cursor: pointer; }
   .menu-toggle, .mobile-menu { display: none; }
   .section { padding: 128px 7vw; }
   .hero { padding: 150px 7vw 90px; }
-  .hero-bottom { flex-direction: row; justify-content: center; align-items: center; }
-  .intro-grid, .about-layout, .contact-grid { grid-template-columns: 1.15fr .85fr; align-items: center; }
+  .hero-bottom { flex-direction: column; justify-content: center; align-items: center; }
+  .intro-grid, .about-layout, .contact-grid { grid-template-columns: 1fr; align-items: center; justify-items: center; }
   .manifesto-row { grid-template-columns: 80px 1fr; align-items: center; }
-  .projects-head { flex-direction: row; justify-content: center; align-items: center; text-align: center; }
+  .projects-head { flex-direction: column; justify-content: center; align-items: center; text-align: center; }
   .project-list { grid-template-columns: 1.15fr .85fr; }
   .project-card:nth-child(2) { margin-top: 90px; }
   .project-card:nth-child(3) { margin-top: -40px; }
