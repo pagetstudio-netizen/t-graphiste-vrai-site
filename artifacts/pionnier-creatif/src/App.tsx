@@ -107,7 +107,7 @@ function SiteNav() {
       <header className="site-nav" data-testid="site-navigation">
         <Link href="/" className="brand-mark" data-testid="link-brand">
           <span className="brand-dot" aria-hidden="true" />
-          <span>Pionnier<br />Créatif</span>
+            <span>Pionnier<span className="brand-break"><br /></span><span className="brand-last">Créatif</span></span>
         </Link>
         <nav className="nav-links" aria-label="Navigation principale">
           {navItems.map((item) => (
@@ -161,7 +161,7 @@ function Footer() {
 function Shell({ children }: { children: ReactNode }) {
   const [location] = useLocation();
   useEffect(() => window.scrollTo({ top: 0, behavior: 'smooth' }), [location]);
-  return <div className="site-shell"><SiteNav /><main className="main-wrap">{children}</main><Footer /></div>;
+  return <div className={`site-shell ${location === '/' ? 'home-shell' : ''}`}><SiteNav /><main className="main-wrap">{children}</main><Footer /></div>;
 }
 
 function ButtonLink({ href, children, variant = 'dark' }: { href: string; children: ReactNode; variant?: 'dark' | 'light' | 'ghost' | 'red' }) {
@@ -189,6 +189,14 @@ function HomePage() {
           </div>
         </div>
         <span className="hero-star" aria-hidden="true">*</span>
+      </section>
+      <section className="home-intro" data-testid="section-home-intro">
+        <div className="home-intro-inner">
+          <span className="eyebrow">01 / La vision</span>
+          <h2 className="home-intro-title">Les bonnes idées méritent plus qu’un joli <em>logo.</em></h2>
+          <p className="home-intro-copy">Une marque n’est pas une façade. C’est une façon de prendre position, de créer du lien et d’avancer avec justesse.</p>
+          <span className="home-intro-star" aria-hidden="true">*</span>
+        </div>
       </section>
       <Ticker />
       <section className="section" id="vision" data-testid="section-vision">
