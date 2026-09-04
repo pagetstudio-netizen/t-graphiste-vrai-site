@@ -347,9 +347,18 @@ function ServicesPreview() {
   </section>;
 }
 
+const portraitImage = `${import.meta.env.BASE_URL}pionnier-portrait.png`;
+
+function PortraitBlock({ label, detail }: { label: string; detail: string }) {
+  return <div className="portrait-block">
+    <img className="portrait-image" src={portraitImage} alt="Portrait du créateur de Pionnier Créatif" />
+    <div className="portrait-caption"><span>{label}</span><span>{detail}</span></div>
+  </div>;
+}
+
 function AboutPreview() {
   return <section className="section" id="a-propos" data-testid="section-about">
-    <div className="section-inner about-layout"><div className="portrait-block"><div className="portrait-caption"><span>À propos / 04</span><span>En mouvement depuis 2015</span></div></div>
+    <div className="section-inner about-layout"><PortraitBlock label="À propos / 04" detail="En mouvement depuis 2015" />
       <div className="about-copy"><span className="eyebrow">04 / À propos</span><p>Je suis la personne derrière Pionnier Créatif. J’aime les idées nettes, les détails qui décalent et les marques qui avancent.</p><p className="small-copy">Direction artistique, design graphique et stratégie de marque : je travaille en solo ou avec une équipe choisie selon chaque terrain de jeu. Mon rôle est de faire émerger ce qui vous appartient déjà.</p><div className="about-meta"><div><span className="meta-label">Base</span><span className="meta-value">Paris, partout</span></div><div><span className="meta-label">Terrain</span><span className="meta-value">Culture · lifestyle · impact</span></div></div><div style={{ marginTop: '30px' }}><ButtonLink href="/a-propos" variant="ghost">En savoir plus</ButtonLink></div></div>
     </div>
   </section>;
@@ -410,7 +419,7 @@ function ServicesPage() {
 
 function AboutPage() {
   usePageMeta('À propos', 'Pionnier Créatif est le studio indépendant de direction artistique de Camille, basé à Paris.');
-  return <><section className="case-hero" style={{ background: '#8049fe' }}><div className="case-hero-inner"><span className="eyebrow">À propos / coulisses</span><h1 className="display">Pas un mode<br /><span style={{ color: '#f29200' }}>d’emploi.</span></h1><p>Un regard, une méthode et le goût des projets qui déplacent quelque chose.</p></div></section><section className="section"><div className="section-inner about-layout"><div className="portrait-block"><div className="portrait-caption"><span>Camille · direction</span><span>2015 — aujourd’hui</span></div></div><div className="about-copy"><span className="eyebrow">Le studio</span><p>Pionnier Créatif est né d’une envie simple : remettre du sens, de la précision et du mouvement dans les identités de marque.</p><p className="small-copy">Je m’appelle Camille. Je conçois des identités visuelles, des campagnes et des systèmes qui aident les organisations à prendre une place juste. Je crois au travail bien fait, aux discussions franches et aux détails qui changent tout. Selon les projets, je m’entoure de rédacteurs, photographes, développeurs et autres cerveaux curieux.</p><div className="about-meta"><div><span className="meta-label">Clients rêvés</span><span className="meta-value">Celles et ceux qui osent</span></div><div><span className="meta-label">À côté</span><span className="meta-value">Éditions · musique · objets</span></div></div></div></div></section><section className="section manifesto"><div className="section-inner"><span className="eyebrow">Ce qui compte</span>{['Faire moins, mais mieux.', 'Rester curieux du problème.', 'Ne jamais confondre impact et bruit.'].map((line, index) => <div className="manifesto-row" key={line}><span className="manifesto-num">0{index + 1}</span><span className="manifesto-copy">{line}</span></div>)}</div></section><ContactSection showForm={false} /></>;
+  return <><section className="case-hero" style={{ background: '#8049fe' }}><div className="case-hero-inner"><span className="eyebrow">À propos / coulisses</span><h1 className="display">Pas un mode<br /><span style={{ color: '#f29200' }}>d’emploi.</span></h1><p>Un regard, une méthode et le goût des projets qui déplacent quelque chose.</p></div></section><section className="section"><div className="section-inner about-layout"><PortraitBlock label="Camille · direction" detail="2015 — aujourd’hui" /><div className="about-copy"><span className="eyebrow">Le studio</span><p>Pionnier Créatif est né d’une envie simple : remettre du sens, de la précision et du mouvement dans les identités de marque.</p><p className="small-copy">Je m’appelle Camille. Je conçois des identités visuelles, des campagnes et des systèmes qui aident les organisations à prendre une place juste. Je crois au travail bien fait, aux discussions franches et aux détails qui changent tout. Selon les projets, je m’entoure de rédacteurs, photographes, développeurs et autres cerveaux curieux.</p><div className="about-meta"><div><span className="meta-label">Clients rêvés</span><span className="meta-value">Celles et ceux qui osent</span></div><div><span className="meta-label">À côté</span><span className="meta-value">Éditions · musique · objets</span></div></div></div></div></section><section className="section manifesto"><div className="section-inner"><span className="eyebrow">Ce qui compte</span>{['Faire moins, mais mieux.', 'Rester curieux du problème.', 'Ne jamais confondre impact et bruit.'].map((line, index) => <div className="manifesto-row" key={line}><span className="manifesto-num">0{index + 1}</span><span className="manifesto-copy">{line}</span></div>)}</div></section><ContactSection showForm={false} /></>;
 }
 
 function ContactPage() {
