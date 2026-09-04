@@ -11,6 +11,7 @@ const queryClient = new QueryClient();
 const CONTACT_EMAIL = 'medkoyi1@gmail.com';
 const WHATSAPP_LINK = 'https://wa.me/22897899364';
 const TIKTOK_LINK = 'https://www.tiktok.com/@md.koyi.graphiste?is_from_webapp=1&sender_device=pc';
+const logoImage = `${import.meta.env.BASE_URL}pionnier-logo.png`;
 
 type Project = {
   slug: string;
@@ -109,8 +110,8 @@ function SiteNav() {
     <>
       <header className="site-nav" data-testid="site-navigation">
         <Link href="/" className="brand-mark" data-testid="link-brand">
-          <span className="brand-dot" aria-hidden="true" />
-            <span>Pionnier<span className="brand-break"><br /></span><span className="brand-last">Créatif</span></span>
+          <img className="brand-logo" src={logoImage} alt="Pionnier Créatif" />
+          <span className="sr-only">Pionnier Créatif</span>
         </Link>
         <nav className="nav-links" aria-label="Navigation principale">
           {navItems.map((item) => (
@@ -142,7 +143,9 @@ function Footer() {
     <footer className="site-footer">
       <div className="footer-top">
         <div>
-          <Link href="/" className="footer-brand" data-testid="link-footer-brand">Pionnier<br />Créatif</Link>
+          <Link href="/" className="footer-brand" data-testid="link-footer-brand">
+            <img className="footer-logo" src={logoImage} alt="Pionnier Créatif" />
+          </Link>
           <p className="footer-copy">Direction artistique indépendante pour celles et ceux qui veulent faire les choses autrement.</p>
         </div>
         <div className="footer-copy">
