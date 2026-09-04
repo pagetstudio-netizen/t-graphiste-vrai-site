@@ -124,7 +124,7 @@ function SiteNav() {
       {open && (
         <nav className="mobile-menu" aria-label="Navigation mobile" data-testid="mobile-navigation">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href} onClick={() => setOpen(false)} data-testid={`link-mobile-${item.label.toLowerCase().replaceAll(' ', '-')}`}>
+            <Link key={item.href} href={item.href} className={`mobile-nav-link ${isActive(item.href) ? 'active' : ''}`} onClick={() => setOpen(false)} aria-current={isActive(item.href) ? 'page' : undefined} data-testid={`link-mobile-${item.label.toLowerCase().replaceAll(' ', '-')}`}>
               {item.label}
             </Link>
           ))}
