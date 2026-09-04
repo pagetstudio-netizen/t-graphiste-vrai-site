@@ -1,6 +1,6 @@
 import { useEffect, useState, type FormEvent, type MouseEvent, type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ArrowDownRight, ArrowLeft, ArrowUpRight, Check, FilePlus2, Instagram, Linkedin, Mail, Menu, MessageCircle, X } from 'lucide-react';
+import { ArrowDownRight, ArrowLeft, ArrowUpRight, Check, FilePlus2, Instagram, Linkedin, Mail, Menu, MessageCircle, Search, X } from 'lucide-react';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -273,14 +273,18 @@ function ProjectVisual({ project }: { project: Project }) {
 function ProjectGalleryCard({ project, onOpen }: { project: Project; onOpen: (project: Project) => void }) {
   return (
     <article className={`project-gallery-card ${project.tone}`}>
-      <button type="button" className="project-gallery-trigger" onClick={() => onOpen(project)} data-testid={`button-gallery-${project.slug}`}>
+      <button type="button" className="project-gallery-image-button" onClick={() => onOpen(project)} aria-label={`Voir le visuel de ${project.name}`} data-testid={`button-gallery-${project.slug}`}>
         <ProjectVisual project={project} />
-        <span className="project-gallery-body">
-          <span className="project-gallery-category">{project.category}</span>
-          <span className="project-gallery-name">{project.name}</span>
-          <span className="project-gallery-action">Voir le visuel <ArrowUpRight size={17} /></span>
-        </span>
       </button>
+      <div className="project-gallery-body">
+        <span className="project-gallery-category">{project.category}</span>
+        <h2 className="project-gallery-name">{project.name}</h2>
+        <div className="project-gallery-actions">
+          <button type="button" className="btn btn-red gallery-view-button" onClick={() => onOpen(project)} data-testid={`button-view-project-${project.slug}`}>
+            Voir ce projet <ArrowUpRight size={16} />
+          </button>
+        </div>
+      </div>
     </article>
   );
 }
@@ -377,7 +381,26 @@ function ContactForm() {
 function ProjectsPage() {
   usePageMeta('Projets', 'Découvrez les identités visuelles, campagnes et systèmes de marque conçus par Pionnier Créatif.');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  return <><section className="case-hero" style={{ background: '#111' }}><div className="case-hero-inner"><span className="eyebrow">Projets / sélection</span><h1 className="display">Les idées<br /><span style={{ color: '#f29200' }}>prennent forme.</span></h1><p>Des mini case studies pour voir ce qui se passe entre le brief et la marque que l’on retient.</p></div></section><section className="section project-gallery-section" data-testid="page-projects"><div className="section-inner"><div className="project-gallery-grid">{projects.map((project) => <ProjectGalleryCard key={project.slug} project={project} onOpen={setSelectedProject} />)}</div></div></section>{selectedProject && <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />}</>;
+  const [searchTerm, setSearchTerm] = useState('');
+  const filteredProjects = projects.filter((project) => [project.name, project.client, project.category, ...project.tags].join(' ').toLowerCase().includes(searchTerm.toLowerCase().trim()));
+  return <>
+    <section className="project-store-hero">
+      <div className="project-store-hero-inner"><span className="eyebrow">Projets / sélection</span><h1 className="display">Notre <span>conception.</span></h1><p>Des identités, campagnes et expériences visuelles pensées pour donner une forme juste aux bonnes idées.</p></div>
+    </section>
+    <section className="section project-gallery-section" data-testid="page-projects">
+      <div className="section-inner">
+        <div className="project-store-toolbar">
+          <label className="project-search">
+            <span className="sr-only">Rechercher un projet</span>
+            <input type="search" value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} placeholder="Modèles de recherche" data-testid="input-project-search" />
+            <span className="project-search-icon"><Search size={22} /></span>
+          </label>
+        </div>
+        {filteredProjects.length > 0 ? <div className="project-gallery-grid">{filteredProjects.map((project) => <ProjectGalleryCard key={project.slug} project={project} onOpen={setSelectedProject} />)}</div> : <div className="project-empty-state"><Search size={25} /><h2>Aucun projet trouvé.</h2><p>Essayez un autre mot-clé ou explorez toute la sélection.</p><button type="button" className="btn btn-dark" onClick={() => setSearchTerm('')}>Réinitialiser la recherche</button></div>}
+      </div>
+    </section>
+    {selectedProject && <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />}
+  </>;
 }
 
 function ServicesPage() {
