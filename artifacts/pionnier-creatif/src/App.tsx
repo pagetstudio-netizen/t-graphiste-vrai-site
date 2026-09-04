@@ -385,7 +385,7 @@ function ProjectsPage() {
   const filteredProjects = projects.filter((project) => [project.name, project.client, project.category, ...project.tags].join(' ').toLowerCase().includes(searchTerm.toLowerCase().trim()));
   return <>
     <section className="project-store-hero">
-      <div className="project-store-hero-inner"><span className="eyebrow">Projets / sélection</span><h1 className="display">Notre <span>conception.</span></h1><p>Des identités, campagnes et expériences visuelles pensées pour donner une forme juste aux bonnes idées.</p></div>
+      <div className="project-store-hero-inner"><h1 className="display">Notre <span>conception.</span></h1><p>Des identités, campagnes et expériences visuelles pensées pour donner une forme juste aux bonnes idées.</p></div>
     </section>
     <section className="section project-gallery-section" data-testid="page-projects">
       <div className="section-inner">

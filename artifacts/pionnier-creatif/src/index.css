@@ -231,11 +231,14 @@ button { cursor: pointer; }
 .project-cart-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid rgba(17,17,17,.12); font-family: 'Space Grotesk', sans-serif; font-size: 15px; }
 .project-cart-panel .btn { width: 100%; margin-top: 18px; }
 .project-gallery-grid { display: grid; gap: 28px; max-width: 980px; margin: 0 auto; }
-.project-gallery-card { overflow: hidden; border: 1px solid rgba(17,17,17,.1); border-radius: 26px; background: #e8f0f5; box-shadow: 0 18px 36px rgba(17,17,17,.1); transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease; }
+.project-gallery-card { justify-self: center; width: min(100%, 500px); overflow: hidden; border: 1px solid rgba(17,17,17,.1); border-top: 4px solid #e00815; border-radius: 26px; background: #e8f0f5; box-shadow: 0 18px 36px rgba(17,17,17,.1); transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease; }
+.project-gallery-card.orange { border-top-color: #f29200; }
+.project-gallery-card.violet { border-top-color: #8049fe; }
+.project-gallery-card.cream { border-top-color: #111; }
 .project-gallery-card:hover { transform: translateY(-8px); box-shadow: 0 26px 46px rgba(17,17,17,.16); }
 .project-gallery-image-button { display: block; width: 100%; padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; }
 .project-gallery-image-button:focus-visible { outline: 3px solid #f29200; outline-offset: -5px; }
-.project-gallery-art { position: relative; display: block; min-height: 320px; overflow: hidden; isolation: isolate; padding: 22px; text-align: left; }
+.project-gallery-art { position: relative; display: block; min-height: 260px; margin: 18px 18px 0; overflow: hidden; isolation: isolate; padding: 18px; border-radius: 16px; box-shadow: inset 0 0 0 1px rgba(17,17,17,.12), 0 8px 18px rgba(17,17,17,.08); text-align: left; }
 .project-gallery-art.orange, .project-gallery-card.orange .project-gallery-art { background: #f29200; color: #111; }
 .project-gallery-art.red, .project-gallery-card.red .project-gallery-art { background: #e00815; color: #fffdf6; }
 .project-gallery-art.violet, .project-gallery-card.violet .project-gallery-art { background: #8049fe; color: #fffdf6; }
@@ -251,6 +254,7 @@ button { cursor: pointer; }
 .gallery-art-orbit::before { inset: 22%; transform: rotate(45deg); }
 .gallery-art-orbit::after { inset: 42%; border-radius: 50%; }
 .gallery-art-title { position: absolute; z-index: 3; left: 24px; right: 24px; bottom: 24px; font-family: 'Space Grotesk', sans-serif; font-size: clamp(34px, 6vw, 64px); font-weight: 600; line-height: .88; letter-spacing: -.07em; }
+.project-gallery-image-button .gallery-art-title { display: none; }
 .project-gallery-image-button:hover .frame-one { transform: rotate(-4deg) scale(1.04); }
 .project-gallery-image-button:hover .frame-two { transform: rotate(18deg) scale(1.05); }
 .project-gallery-image-button:hover .gallery-art-orbit { transform: rotate(22deg) scale(1.08); }
@@ -268,7 +272,7 @@ button { cursor: pointer; }
 .project-empty-state p { color: rgba(17,17,17,.64); }
 .project-modal-backdrop { position: fixed; z-index: 60; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(17,17,17,.78); backdrop-filter: blur(10px); animation: modalBackdropIn .25s ease both; }
 .project-modal { position: relative; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr); width: min(100%, 980px); max-height: calc(100dvh - 40px); overflow: auto; border-radius: 26px; background: #fffdf6; box-shadow: 0 28px 80px rgba(0,0,0,.28); animation: modalIn .35s cubic-bezier(.2,.8,.2,1) both; }
-.project-modal-visual .project-gallery-art { min-height: 560px; height: 100%; }
+.project-modal-visual .project-gallery-art { min-height: 560px; height: 100%; margin: 0; border-radius: 0; box-shadow: none; }
 .project-modal-copy { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 54px 38px; text-align: center; }
 .project-modal-copy h2 { margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(36px, 5vw, 64px); line-height: .9; letter-spacing: -.07em; }
 .project-modal-copy p { max-width: 380px; margin: 0; color: rgba(17,17,17,.68); line-height: 1.55; }
@@ -459,7 +463,7 @@ button { cursor: pointer; }
   .project-cart-wrap { align-self: center; }
   .project-cart-label { display: inline; }
   .project-gallery-grid { gap: 22px; }
-  .project-gallery-art { min-height: 280px; }
+  .project-gallery-art { min-height: 230px; margin: 14px 14px 0; }
   .project-gallery-body { min-height: 220px; padding-inline: 18px; }
   .project-gallery-actions { flex-direction: column; width: 100%; }
   .gallery-cart-button, .gallery-view-button { width: 100%; justify-content: center; }
