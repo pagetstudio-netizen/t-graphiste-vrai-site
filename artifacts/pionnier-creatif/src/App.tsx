@@ -21,11 +21,11 @@ const projectImages = {
   adeny: `${import.meta.env.BASE_URL}adeny.jpg`,
 };
 const serviceVideos = {
-  logo: 'https://videos.pexels.com/video-files/5928287/5928287-uhd_2160_3840_25fps.mp4',
+  logo: 'https://videos.pexels.com/video-files/5928287/5928287-hd_1080_1920_25fps.mp4',
   identity: 'https://videos.pexels.com/video-files/6013203/6013203-uhd_4096_2160_24fps.mp4',
-  campaign: 'https://videos.pexels.com/video-files/3125907/3125907-uhd_3840_2160_25fps.mp4',
+  campaign: 'https://videos.pexels.com/video-files/3125907/3125907-hd_1920_1080_25fps.mp4',
   packaging: 'https://videos.pexels.com/video-files/6013203/6013203-uhd_4096_2160_24fps.mp4',
-  communication: 'https://videos.pexels.com/video-files/3125907/3125907-uhd_3840_2160_25fps.mp4',
+  communication: 'https://videos.pexels.com/video-files/3125907/3125907-hd_1920_1080_25fps.mp4',
 };
 
 type Project = {
@@ -512,7 +512,7 @@ function ServicesPage() {
         <div className="services-grid services-page-grid">
           {services.map(([number, title, copy, video]) => (
             <article className="service service-image-card" key={number}>
-              <video className="service-card-video" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
+              <video className="service-card-video" autoPlay muted loop playsInline preload="auto" aria-hidden="true">
                 <source src={video} type="video/mp4" />
               </video>
               <span className="service-image-overlay" aria-hidden="true" />
