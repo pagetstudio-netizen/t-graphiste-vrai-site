@@ -191,10 +191,10 @@ function SplashIntro() {
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    const leaveTimer = window.setTimeout(() => setIsLeaving(true), 4300);
+    const leaveTimer = window.setTimeout(() => setIsLeaving(true), 7500);
     const removeTimer = window.setTimeout(() => {
       document.body.style.overflow = previousOverflow;
-    }, 5200);
+    }, 8400);
     return () => {
       window.clearTimeout(leaveTimer);
       window.clearTimeout(removeTimer);
