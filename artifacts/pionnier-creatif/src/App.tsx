@@ -13,6 +13,13 @@ const WHATSAPP_LINK = 'https://wa.me/22897899364';
 const TIKTOK_LINK = 'https://www.tiktok.com/@md.koyi.graphiste?is_from_webapp=1&sender_device=pc';
 const logoImage = `${import.meta.env.BASE_URL}pionnier-logo.png`;
 const portraitImage = `${import.meta.env.BASE_URL}pionnier-portrait.png`;
+const projectImages = {
+  kondoTextile: `${import.meta.env.BASE_URL}kondo-textile.jpg`,
+  kondoSacs: `${import.meta.env.BASE_URL}kondo-sacs.jpg`,
+  solree: `${import.meta.env.BASE_URL}solree-event.png`,
+  nexora: `${import.meta.env.BASE_URL}nexora-tech.jpg`,
+  adeny: `${import.meta.env.BASE_URL}adeny.jpg`,
+};
 
 type Project = {
   slug: string;
@@ -25,6 +32,7 @@ type Project = {
   tags: string[];
   tone: 'red' | 'orange' | 'violet' | 'cream';
   result: string;
+  images: string[];
 };
 
 const projects: Project[] = [
@@ -39,6 +47,7 @@ const projects: Project[] = [
     tags: ['Identité', 'Édition', 'Digital'],
     tone: 'orange',
     result: 'Une identité modulaire qui se décline aussi bien en couverture qu’en événement.',
+    images: [projectImages.kondoTextile, projectImages.kondoSacs],
   },
   {
     slug: 'météore-studio',
@@ -51,6 +60,7 @@ const projects: Project[] = [
     tags: ['Stratégie', 'Direction artistique', 'Campagne'],
     tone: 'red',
     result: 'Un système de marque vivant, pensé pour bouger avec chaque nouvelle production.',
+    images: [projectImages.solree],
   },
   {
     slug: 'sillage',
@@ -63,6 +73,7 @@ const projects: Project[] = [
     tags: ['Naming', 'Packaging', 'E-commerce'],
     tone: 'violet',
     result: 'Une présence singulière qui a installé la marque dans 42 points de vente en un an.',
+    images: [projectImages.nexora],
   },
   {
     slug: 'les-ondes',
@@ -75,6 +86,7 @@ const projects: Project[] = [
     tags: ['Campagne', 'Scénographie', 'Social'],
     tone: 'cream',
     result: 'Une campagne qui a fait grimper les réservations de 31% en deux éditions.',
+    images: [projectImages.adeny],
   },
 ];
 
@@ -262,7 +274,8 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <Link href={projectHref} onClick={openProject} className={`project-card ${project.tone} ${opening ? 'is-opening' : ''}`} data-testid={`card-project-${project.slug}`}>
       <div className="project-top"><span>{project.number} / {project.year}</span><span>{project.client}</span></div>
-      <div className="project-shape" aria-hidden="true" />
+      <img className="project-card-image" src={project.images[0]} alt="" aria-hidden="true" />
+      <span className="project-card-image-overlay" aria-hidden="true" />
       <div className="project-footer">
         <div><h3 className="project-name">{project.name}</h3><div className="project-tags">{project.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div></div>
         <span className="circle-arrow" aria-hidden="true"><ArrowUpRight size={19} /></span>
@@ -274,12 +287,9 @@ function ProjectCard({ project }: { project: Project }) {
 function ProjectVisual({ project }: { project: Project }) {
   return (
     <span className={`project-gallery-art ${project.tone}`} aria-hidden="true">
+      <img className="project-gallery-image" src={project.images[0]} alt="" />
       <span className="gallery-art-meta">{project.number} / {project.year}</span>
       <span className="gallery-art-client">{project.client}</span>
-      <span className="gallery-art-frame frame-one" />
-      <span className="gallery-art-frame frame-two" />
-      <span className="gallery-art-orbit" />
-      <span className="gallery-art-title">{project.name}</span>
     </span>
   );
 }
@@ -490,7 +500,7 @@ function ProjectPage() {
   const project = projects.find((item) => item.slug === params.slug);
   usePageMeta(project?.name ?? 'Projet', project?.summary ?? 'Étude de cas Pionnier Créatif.');
   if (!project) return <NotFound />;
-  return <><section className={`case-hero ${project.tone}`} style={{ background: project.tone === 'orange' ? '#f29200' : project.tone === 'violet' ? '#8049fe' : project.tone === 'cream' ? '#fffdf6' : '#e00815', color: project.tone === 'orange' || project.tone === 'cream' ? '#111' : '#fffdf6' }}><div className="case-hero-inner"><Link href="/projets" className="back-link" data-testid="link-back-projects"><ArrowLeft size={15} /> Retour aux projets</Link><span className="eyebrow">{project.number} / {project.category}</span><h1 className="display">{project.name}</h1><p>{project.summary}</p><div className="case-meta"><div><span>Client</span><strong>{project.client}</strong></div><div><span>Année</span><strong>{project.year}</strong></div></div></div></section><section className="case-body" data-testid={`page-case-study-${project.slug}`}><CaseStudySection label="Le contexte" title="Une marque avec quelque chose à dire." copy={`${project.client} avait une intuition forte, mais pas encore le langage pour la partager. Il fallait créer un point de vue clair, capable de réunir l’équipe et de donner envie aux publics de s’approcher.`} tone={project.tone} /><CaseStudySection label="Le problème" title="Sortir du déjà-vu sans perdre l’évidence." copy="Le défi était de trouver le juste équilibre : une identité assez singulière pour être mémorisée, assez souple pour accompagner des contenus, des temps forts et des conversations très différents." tone={project.tone === 'violet' ? 'orange' : 'violet'} /><CaseStudySection label="Le système" title="Une idée simple, beaucoup de possibilités." copy="Nous avons construit un système graphique à partir d’une forme-signature, d’une typographie qui assume sa voix et d’une palette qui donne le ton. Chaque règle est pensée pour être utilisée, détournée et transmise." tone={project.tone} /><div className="case-section"><div><span className="case-label">Le résultat</span><h2>{project.result}</h2></div><p>De la stratégie au déploiement, le rôle de Pionnier Créatif a été de faire tenir la vision dans chaque détail : direction artistique, identité, applications et accompagnement de l’équipe.</p></div></section><section className="section dark-section"><div className="section-inner project-next"><div><span className="eyebrow">Un autre terrain de jeu ?</span><h2 className="section-title display">Votre projet<br /><em>ensuite.</em></h2></div><ButtonLink href="/contact" variant="red">Parler du projet</ButtonLink></div></section></>;
+  return <><section className={`case-hero ${project.tone}`} style={{ background: project.tone === 'orange' ? '#f29200' : project.tone === 'violet' ? '#8049fe' : project.tone === 'cream' ? '#fffdf6' : '#e00815', color: project.tone === 'orange' || project.tone === 'cream' ? '#111' : '#fffdf6' }}><div className="case-hero-inner"><Link href="/projets" className="back-link" data-testid="link-back-projects"><ArrowLeft size={15} /> Retour aux projets</Link><span className="eyebrow">{project.number} / {project.category}</span><h1 className="display">{project.name}</h1><p>{project.summary}</p><div className="case-meta"><div><span>Client</span><strong>{project.client}</strong></div><div><span>Année</span><strong>{project.year}</strong></div></div></div></section><section className="case-gallery" aria-label={`Visuels du projet ${project.name}`}>{project.images.map((image, index) => <img key={image} src={image} alt={`${project.name} — visuel ${index + 1}`} />)}</section><section className="case-body" data-testid={`page-case-study-${project.slug}`}><CaseStudySection label="Le contexte" title="Une marque avec quelque chose à dire." copy={`${project.client} avait une intuition forte, mais pas encore le langage pour la partager. Il fallait créer un point de vue clair, capable de réunir l’équipe et de donner envie aux publics de s’approcher.`} tone={project.tone} /><CaseStudySection label="Le problème" title="Sortir du déjà-vu sans perdre l’évidence." copy="Le défi était de trouver le juste équilibre : une identité assez singulière pour être mémorisée, assez souple pour accompagner des contenus, des temps forts et des conversations très différents." tone={project.tone === 'violet' ? 'orange' : 'violet'} /><CaseStudySection label="Le système" title="Une idée simple, beaucoup de possibilités." copy="Nous avons construit un système graphique à partir d’une forme-signature, d’une typographie qui assume sa voix et d’une palette qui donne le ton. Chaque règle est pensée pour être utilisée, détournée et transmise." tone={project.tone} /><div className="case-section"><div><span className="case-label">Le résultat</span><h2>{project.result}</h2></div><p>De la stratégie au déploiement, le rôle de Pionnier Créatif a été de faire tenir la vision dans chaque détail : direction artistique, identité, applications et accompagnement de l’équipe.</p></div></section><section className="section dark-section"><div className="section-inner project-next"><div><span className="eyebrow">Un autre terrain de jeu ?</span><h2 className="section-title display">Votre projet<br /><em>ensuite.</em></h2></div><ButtonLink href="/contact" variant="red">Parler du projet</ButtonLink></div></section></>;
 }
 
 function CaseStudySection({ label, title, copy, tone }: { label: string; title: string; copy: string; tone: Project['tone'] }) {
