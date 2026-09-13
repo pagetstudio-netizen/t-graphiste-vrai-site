@@ -395,12 +395,12 @@ button { cursor: pointer; }
 .about-hero { position: relative; overflow: hidden; padding: 150px 24px 86px; background: #e00815; color: #fffdf6; }
 .about-hero::after { position: absolute; right: -12vw; bottom: -22vw; width: 58vw; height: 58vw; border: 1px solid rgba(255,253,246,.25); border-radius: 50%; content: ''; }
 .about-hero-grid { position: relative; z-index: 1; display: grid; gap: 54px; max-width: 1200px; margin: 0 auto; align-items: center; }
-.about-hero-copy { max-width: 700px; }
+.about-hero-copy { max-width: 700px; margin-inline: auto; text-align: center; }
 .about-hero .eyebrow::before { background: #f29200; }
 .about-hero h1 { margin: 28px 0 30px; font-size: clamp(64px, 12vw, 156px); }
 .about-hero h1 span { color: #f29200; }
-.about-hero-copy > p { max-width: 490px; color: rgba(255,253,246,.82); font-size: 17px; line-height: 1.5; }
-.about-hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 34px; }
+.about-hero-copy > p { max-width: 490px; margin-inline: auto; color: rgba(255,253,246,.82); font-size: 17px; line-height: 1.5; }
+.about-hero-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 34px; }
 .about-hero-tags span { padding: 9px 12px; border: 1px solid rgba(255,253,246,.42); font-family: var(--app-font-mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
 .about-poster { position: relative; width: min(100%, 430px); margin: 0 auto; padding: 12px 12px 0; background: #fffdf6; color: #111; transform: rotate(2deg); box-shadow: 18px 18px 0 rgba(17,17,17,.18); }
 .about-poster img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
@@ -435,9 +435,10 @@ button { cursor: pointer; }
 .about-coaching { padding: 104px 24px; background: #e00815; color: #fffdf6; }
 .about-coaching-grid { display: grid; gap: 54px; max-width: 1200px; margin: 0 auto; align-items: center; }
 .about-coaching .eyebrow::before { background: #f29200; }
-.about-coaching-copy h2 { max-width: 700px; margin: 24px 0 28px; font-size: clamp(45px, 7vw, 92px); }
+.about-coaching-copy { text-align: center; }
+.about-coaching-copy h2 { max-width: 700px; margin: 24px auto 28px; font-size: clamp(45px, 7vw, 92px); }
 .about-coaching-copy h2 em { color: #f29200; font-style: normal; }
-.about-coaching-copy p { max-width: 580px; color: rgba(255,253,246,.82); font-size: 16px; line-height: 1.55; }
+.about-coaching-copy p { max-width: 580px; margin-inline: auto; color: rgba(255,253,246,.82); font-size: 16px; line-height: 1.55; }
 .about-coaching-copy p + p { margin-top: 16px; }
 .about-coaching-copy .btn { margin-top: 26px; }
 .about-profile-visual { margin: 0; }
