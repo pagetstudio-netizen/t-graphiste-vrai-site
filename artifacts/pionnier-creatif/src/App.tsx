@@ -27,6 +27,7 @@ const serviceVideos = {
   packaging: 'https://videos.pexels.com/video-files/6013203/6013203-uhd_4096_2160_24fps.mp4',
   communication: 'https://videos.pexels.com/video-files/3125907/3125907-hd_1920_1080_25fps.mp4',
 };
+const savoirFaireVideo = 'https://videos.pexels.com/video-files/2539567/2539567-hd_1920_1080_24fps.mp4';
 
 type Project = {
   slug: string;
@@ -365,10 +366,10 @@ function ProjectsPreview() {
 
 function ServicesPreview() {
   const services = [
-    ['01', 'Positionnement', 'Trouver le mot, l’angle et la place qui rendent votre projet évident.'],
-    ['02', 'Identité visuelle', 'Créer un langage visuel complet, reconnaissable et prêt à vivre.'],
-    ['03', 'Direction artistique', 'Donner une direction juste à vos campagnes, contenus et expériences.'],
-    ['04', 'Accompagnement', 'Faire grandir votre marque sans perdre son élan ni sa cohérence.'],
+    ['01', 'Positionnement', 'Trouver le mot, l’angle et la place qui rendent votre projet évident.', serviceVideos.logo],
+    ['02', 'Identité visuelle', 'Créer un langage visuel complet, reconnaissable et prêt à vivre.', serviceVideos.identity],
+    ['03', 'Direction artistique', 'Donner une direction juste à vos campagnes, contenus et expériences.', serviceVideos.campaign],
+    ['04', 'Accompagnement', 'Faire grandir votre marque sans perdre son élan ni sa cohérence.', savoirFaireVideo],
   ];
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -396,10 +397,16 @@ function ServicesPreview() {
         <p>Nous transformons les idées fortes en identités visuelles claires, cohérentes et prêtes à avancer avec votre projet.</p>
       </div>
       <div className="services-panels">
-        {services.map(([number, title, copy], index) => <article className={`service-panel service-panel-${index + 1}`} key={number} data-testid={`card-service-${number}`}>
-          <div className="service-panel-top"><span>{number}</span><ArrowUpRight size={18} /></div>
-          <h3>{title}</h3>
-          <p>{copy}</p>
+        {services.map(([number, title, copy, video], index) => <article className={`service-panel service-panel-${index + 1}`} key={number} data-testid={`card-service-${number}`}>
+          <video className="service-panel-video" autoPlay muted loop playsInline preload="auto" aria-hidden="true">
+            <source src={video} type="video/mp4" />
+          </video>
+          <span className="service-panel-overlay" aria-hidden="true" />
+          <div className="service-panel-content">
+            <div className="service-panel-top"><span>{number}</span><ArrowUpRight size={18} /></div>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </div>
         </article>)}
       </div>
       <div className="services-immersive-action"><ButtonLink href="/services" variant="light">Découvrir l’approche</ButtonLink></div>
