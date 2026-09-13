@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent, type MouseEvent, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type FormEvent, type MouseEvent, type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ArrowDownRight, ArrowLeft, ArrowUpRight, Check, FilePlus2, Mail, Menu, MessageCircle, Search, X } from 'lucide-react';
 import { ErrorBoundary } from '@/components/error-boundary';
@@ -12,6 +12,7 @@ const CONTACT_EMAIL = 'medkoyi1@gmail.com';
 const WHATSAPP_LINK = 'https://wa.me/22897899364';
 const TIKTOK_LINK = 'https://www.tiktok.com/@md.koyi.graphiste?is_from_webapp=1&sender_device=pc';
 const logoImage = `${import.meta.env.BASE_URL}pionnier-logo.png`;
+const portraitImage = `${import.meta.env.BASE_URL}pionnier-portrait.png`;
 
 type Project = {
   slug: string;
@@ -166,7 +167,14 @@ function Footer() {
 
 function Shell({ children }: { children: ReactNode }) {
   const [location] = useLocation();
-  useEffect(() => window.scrollTo({ top: 0, behavior: 'smooth' }), [location]);
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      requestAnimationFrame(() => document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+      return;
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location]);
   return <div className={`site-shell ${location === '/' ? 'home-shell' : ''}`}><SiteNav /><main className="main-wrap">{children}</main><Footer /></div>;
 }
 
@@ -345,15 +353,42 @@ function ServicesPreview() {
     ['03', 'Direction artistique', 'Donner une direction juste à vos campagnes, contenus et expériences.'],
     ['04', 'Accompagnement', 'Faire grandir votre marque sans perdre son élan ni sa cohérence.'],
   ];
-  return <section className="section" id="services" data-testid="section-services">
-    <div className="section-inner"><span className="eyebrow">03 / Savoir-faire</span><h2 className="section-title display">De l’intuition à la <em>trajectoire.</em></h2>
-      <div className="services-grid">{services.map(([number, title, copy]) => <article className="service" key={number} data-testid={`card-service-${number}`}><span className="service-no">{number}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
-      <div style={{ marginTop: '30px' }}><ButtonLink href="/services">Découvrir l’approche</ButtonLink></div>
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.2 });
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  return <section ref={sectionRef} className={`services-immersive ${isVisible ? 'is-visible' : ''}`} id="services" data-testid="section-services">
+    <div className="services-immersive-bg" style={{ backgroundImage: `url(${portraitImage})` }} aria-hidden="true" />
+    <div className="services-immersive-overlay" aria-hidden="true" />
+    <div className="services-immersive-inner">
+      <div className="services-immersive-heading">
+        <span className="eyebrow">03 / Savoir-faire</span>
+        <h2 className="section-title display">De l’intuition à la <em>trajectoire.</em></h2>
+        <p>Nous transformons les idées fortes en identités visuelles claires, cohérentes et prêtes à avancer avec votre projet.</p>
+      </div>
+      <div className="services-panels">
+        {services.map(([number, title, copy], index) => <article className={`service-panel service-panel-${index + 1}`} key={number} data-testid={`card-service-${number}`}>
+          <div className="service-panel-top"><span>{number}</span><ArrowUpRight size={18} /></div>
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+      <div className="services-immersive-action"><ButtonLink href="/services" variant="light">Découvrir l’approche</ButtonLink></div>
     </div>
   </section>;
 }
-
-const portraitImage = `${import.meta.env.BASE_URL}pionnier-portrait.png`;
 
 function PortraitBlock({ label, detail }: { label: string; detail: string }) {
   return <div className="portrait-block">

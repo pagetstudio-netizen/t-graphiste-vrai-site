@@ -311,6 +311,35 @@ button { cursor: pointer; }
 .service-no { font-family: var(--app-font-mono); font-size: 11px; }
 .service h3 { margin: 44px 0 12px; font-family: 'Space Grotesk', sans-serif; font-size: 28px; letter-spacing: -.05em; }
 .service p { max-width: 300px; margin: 0 auto; font-size: 13px; line-height: 1.45; }
+.services-immersive { position: relative; isolation: isolate; overflow: hidden; min-height: 980px; scroll-margin-top: 112px; background: #111; color: #fffdf6; }
+.services-immersive-bg { position: absolute; z-index: -3; inset: -7%; background-position: center 28%; background-size: cover; filter: saturate(.72) contrast(1.08); transform: scale(1.09); transition: transform 1.8s cubic-bezier(.2,.7,.2,1); will-change: transform; }
+.services-immersive.is-visible .services-immersive-bg { transform: scale(1); }
+.services-immersive-overlay { position: absolute; z-index: -2; inset: 0; background: linear-gradient(180deg, rgba(17,17,17,.88) 0%, rgba(17,17,17,.68) 38%, rgba(17,17,17,.91) 100%); }
+.services-immersive-inner { position: relative; z-index: 1; max-width: 1160px; margin: 0 auto; padding: 104px 24px 96px; }
+.services-immersive-heading { max-width: 760px; margin: 0 auto; text-align: center; }
+.services-immersive-heading .eyebrow::before { background: #f29200; }
+.services-immersive-heading .section-title { margin-inline: auto; color: #fffdf6; }
+.services-immersive-heading .section-title em { color: #f29200; }
+.services-immersive-heading > p { max-width: 560px; margin: 28px auto 0; color: rgba(255,253,246,.78); font-size: 16px; line-height: 1.55; }
+.services-panels { display: grid; gap: 1px; margin-top: 54px; border: 1px solid rgba(255,253,246,.5); background: rgba(255,253,246,.5); }
+.service-panel { min-height: 250px; padding: 26px; color: #111; opacity: 0; transform: translateY(34px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1), filter .35s ease; }
+.services-immersive.is-visible .service-panel { opacity: 1; transform: translateY(0); }
+.services-immersive.is-visible .service-panel-1 { transition-delay: .08s; }
+.services-immersive.is-visible .service-panel-2 { transition-delay: .16s; }
+.services-immersive.is-visible .service-panel-3 { transition-delay: .24s; }
+.services-immersive.is-visible .service-panel-4 { transition-delay: .32s; }
+.service-panel:hover { filter: brightness(1.08); }
+.service-panel-1 { background: #fffdf6; }
+.service-panel-2 { background: #e00815; color: #fffdf6; }
+.service-panel-3 { background: #f29200; }
+.service-panel-4 { background: #8049fe; color: #fffdf6; }
+.service-panel-top { display: flex; align-items: center; justify-content: space-between; font-family: var(--app-font-mono); font-size: 11px; }
+.service-panel-top svg { transition: transform .3s cubic-bezier(.2,.8,.2,1); }
+.service-panel:hover .service-panel-top svg { transform: translate(4px, -4px); }
+.service-panel h3 { margin: 64px 0 12px; font-family: 'Space Grotesk', sans-serif; font-size: clamp(29px, 4vw, 44px); font-weight: 500; letter-spacing: -.06em; line-height: .96; }
+.service-panel p { max-width: 320px; margin: 0; font-size: 14px; line-height: 1.45; }
+.services-immersive-action { display: flex; justify-content: center; margin-top: 42px; }
+.services-immersive-action .btn-light:hover { background: #e00815; border-color: #e00815; }
 
 .about-layout { display: grid; gap: 44px; align-items: center; }
 .portrait-block { min-height: 390px; position: relative; display: flex; align-items: end; padding: 24px; background: #f29200; overflow: hidden; }
@@ -422,6 +451,8 @@ button { cursor: pointer; }
   .project-card:nth-child(3) { margin-top: -40px; }
   .project-card:nth-child(4) { margin-top: 50px; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-panels { grid-template-columns: repeat(2, 1fr); }
+  .services-immersive-inner { padding-inline: 7vw; }
   .portrait-block { min-height: 530px; }
   .quote-band { padding: 150px 7vw; }
   .contact-form { padding: 42px; }
@@ -440,6 +471,8 @@ button { cursor: pointer; }
 @media (min-width: 1040px) {
   .nav-links { gap: 34px; }
   .services-grid { grid-template-columns: repeat(4, 1fr); }
+  .services-immersive { min-height: 1040px; }
+  .services-immersive-bg { background-attachment: fixed; }
   .service { min-height: 280px; }
   .service h3 { margin-top: 112px; }
   .hero-title { font-size: min(13vw, 180px); }
