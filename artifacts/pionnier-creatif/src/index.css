@@ -314,9 +314,18 @@ button { cursor: pointer; }
 .services-grid { display: grid; gap: 1px; border: 1px solid #111; background: #111; margin-top: 46px; }
 .service { min-height: 200px; padding: 24px; background: #fffdf6; transition: background-color .25s ease, color .25s ease; }
 .service:hover { background: #e00815; color: #fffdf6; }
+.services-page-title { max-width: 760px; margin: 24px 0 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(42px, 7vw, 86px); line-height: .92; letter-spacing: -.07em; }
+.services-page-title em { color: #e00815; font-style: normal; }
+.service-image-card { position: relative; display: flex; min-height: 360px; align-items: end; overflow: hidden; background-position: center; background-size: cover; color: #fffdf6; }
+.service-image-card:hover { background-color: transparent; color: #fffdf6; }
+.service-image-overlay { position: absolute; z-index: 0; inset: 0; background: linear-gradient(180deg, rgba(17,17,17,.08), rgba(17,17,17,.82)); transition: background .3s ease; }
+.service-image-card:hover .service-image-overlay { background: linear-gradient(180deg, rgba(17,17,17,.02), rgba(17,17,17,.68)); }
+.service-card-content { position: relative; z-index: 1; }
 .service-no { font-family: var(--app-font-mono); font-size: 11px; }
 .service h3 { margin: 44px 0 12px; font-family: 'Space Grotesk', sans-serif; font-size: 28px; letter-spacing: -.05em; }
 .service p { max-width: 300px; margin: 0 auto; font-size: 13px; line-height: 1.45; }
+.service-image-card h3 { margin: 22px 0 12px; font-size: clamp(28px, 3vw, 40px); line-height: .96; }
+.service-image-card p { margin: 0; color: rgba(255,253,246,.82); }
 .services-immersive { position: relative; isolation: isolate; overflow: hidden; min-height: 980px; scroll-margin-top: 112px; background: #111; color: #fffdf6; }
 .services-immersive-bg { position: absolute; z-index: -3; inset: -7%; background-position: center 28%; background-size: cover; filter: saturate(.72) contrast(1.08); transform: scale(1.09); transition: transform 1.8s cubic-bezier(.2,.7,.2,1); will-change: transform; }
 .services-immersive.is-visible .services-immersive-bg { transform: scale(1); }
@@ -459,6 +468,7 @@ button { cursor: pointer; }
   .project-card:nth-child(3) { margin-top: -40px; }
   .project-card:nth-child(4) { margin-top: 50px; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-page-grid { grid-template-columns: repeat(2, 1fr); }
   .services-panels { grid-template-columns: repeat(2, 1fr); }
   .services-immersive-inner { padding-inline: 7vw; }
   .portrait-block { min-height: 0; width: min(100%, 530px); }
@@ -479,6 +489,7 @@ button { cursor: pointer; }
 @media (min-width: 1040px) {
   .nav-links { gap: 34px; }
   .services-grid { grid-template-columns: repeat(4, 1fr); }
+  .services-page-grid { grid-template-columns: repeat(3, 1fr); }
   .services-immersive { min-height: 1040px; }
   .services-immersive-bg { background-attachment: fixed; }
   .service { min-height: 280px; }
