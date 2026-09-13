@@ -270,6 +270,23 @@ function SplashIntro() {
   );
 }
 
+function PageTransition({ location }: { location: string }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const previousLocation = useRef(location);
+
+  useEffect(() => {
+    if (previousLocation.current === location) return;
+    previousLocation.current = location;
+    setIsVisible(true);
+    const timer = window.setTimeout(() => setIsVisible(false), 720);
+    return () => window.clearTimeout(timer);
+  }, [location]);
+
+  return <div className={`page-transition ${isVisible ? 'is-visible' : ''}`} aria-hidden="true">
+    <div className="page-transition-dots"><span /><span /><span /></div>
+  </div>;
+}
+
 function Shell({ children }: { children: ReactNode }) {
   const [location] = useLocation();
   useEffect(() => {
@@ -280,7 +297,7 @@ function Shell({ children }: { children: ReactNode }) {
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
-  return <><SplashIntro /><div className={`site-shell ${location === '/' ? 'home-shell' : ''}`}><SiteNav /><main className="main-wrap">{children}</main><Footer /></div></>;
+  return <><SplashIntro /><PageTransition location={location} /><div className={`site-shell ${location === '/' ? 'home-shell' : ''}`}><SiteNav /><main className="main-wrap">{children}</main><Footer /></div></>;
 }
 
 function ButtonLink({ href, children, variant = 'dark' }: { href: string; children: ReactNode; variant?: 'dark' | 'light' | 'ghost' | 'red' }) {

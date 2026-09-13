@@ -135,6 +135,13 @@ button { cursor: pointer; }
 @keyframes splashFromLeft { from { opacity: 0; transform: translateX(-110%); } to { opacity: 1; transform: translateX(0); } }
 @keyframes splashFromRight { from { opacity: 0; transform: translateX(110%); } to { opacity: 1; transform: translateX(0); } }
 @keyframes splashFadeIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.page-transition { position: fixed; z-index: 90; inset: 0; display: grid; place-items: center; background: #e00815; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .18s ease, visibility .18s ease; }
+.page-transition.is-visible { opacity: 1; visibility: visible; }
+.page-transition-dots { display: flex; align-items: center; gap: 12px; }
+.page-transition-dots span { display: block; width: 13px; height: 13px; border-radius: 50%; background: #fffdf6; transform: scale(.35); animation: pageDotPulse .68s cubic-bezier(.3,.8,.4,1) infinite; }
+.page-transition-dots span:nth-child(2) { animation-delay: .12s; background: #f29200; }
+.page-transition-dots span:nth-child(3) { animation-delay: .24s; }
+@keyframes pageDotPulse { 0%, 100% { opacity: .55; transform: scale(.35); } 48% { opacity: 1; transform: scale(1.45); } }
 .site-nav {
   position: fixed; z-index: 30; top: 18px; left: 20px; right: 20px;
   display: flex; align-items: center; justify-content: space-between;
