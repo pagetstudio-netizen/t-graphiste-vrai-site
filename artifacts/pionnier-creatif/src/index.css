@@ -397,6 +397,8 @@ button { cursor: pointer; }
 .case-hero-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
 .case-hero h1 { max-width: 900px; margin: 30px auto; font-size: clamp(66px, 13vw, 180px); }
 .case-hero p { max-width: 530px; margin-inline: auto; font-size: 18px; line-height: 1.4; }
+.case-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; max-width: 1200px; margin: 0 auto; padding: 24px; background: #fffdf6; }
+.case-gallery img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 16px; box-shadow: 0 12px 28px rgba(17,17,17,.12); }
 .case-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 500px; margin: 54px auto 0; padding-top: 18px; border-top: 1px solid rgba(255,253,246,.5); text-align: center; }
 .case-meta span { display: block; margin-bottom: 8px; color: rgba(255,253,246,.65); font-family: var(--app-font-mono); font-size: 10px; text-transform: uppercase; }
 .case-meta strong { font-size: 14px; }
