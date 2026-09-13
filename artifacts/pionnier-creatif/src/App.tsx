@@ -185,6 +185,47 @@ function Footer() {
   );
 }
 
+function SplashIntro() {
+  const [isLeaving, setIsLeaving] = useState(false);
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const leaveTimer = window.setTimeout(() => setIsLeaving(true), 4300);
+    const removeTimer = window.setTimeout(() => {
+      document.body.style.overflow = previousOverflow;
+    }, 5200);
+    return () => {
+      window.clearTimeout(leaveTimer);
+      window.clearTimeout(removeTimer);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, []);
+
+  const skipIntro = () => setIsLeaving(true);
+
+  return (
+    <div className={`splash-intro ${isLeaving ? 'is-leaving' : ''}`} aria-label="Introduction Pionnier Créatif">
+      <video className="splash-video" autoPlay muted loop playsInline preload="auto" aria-hidden="true">
+        <source src={savoirFaireVideo} type="video/mp4" />
+      </video>
+      <div className="splash-overlay" aria-hidden="true" />
+      <div className="splash-content">
+        <div className="splash-kicker">Méd Koyi · Founder of Pionnier Créatif</div>
+        <div className="splash-title" aria-label="Pionnier Créatif">
+          <span className="splash-line splash-line-left">PIONNIER</span>
+          <span className="splash-line splash-line-right">CRÉATIF</span>
+        </div>
+        <div className="splash-location">
+          <span className="togo-flag" aria-hidden="true"><i /><i /><i /><i /><b /></span>
+          <span>LOMÉ · TOGO</span>
+        </div>
+      </div>
+      <button type="button" className="splash-skip" onClick={skipIntro}>Passer l’intro <ArrowUpRight size={14} /></button>
+    </div>
+  );
+}
+
 function Shell({ children }: { children: ReactNode }) {
   const [location] = useLocation();
   useEffect(() => {
@@ -195,7 +236,7 @@ function Shell({ children }: { children: ReactNode }) {
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
-  return <div className={`site-shell ${location === '/' ? 'home-shell' : ''}`}><SiteNav /><main className="main-wrap">{children}</main><Footer /></div>;
+  return <><SplashIntro /><div className={`site-shell ${location === '/' ? 'home-shell' : ''}`}><SiteNav /><main className="main-wrap">{children}</main><Footer /></div></>;
 }
 
 function ButtonLink({ href, children, variant = 'dark' }: { href: string; children: ReactNode; variant?: 'dark' | 'light' | 'ghost' | 'red' }) {
