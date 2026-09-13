@@ -548,6 +548,13 @@ button { cursor: pointer; }
   .services-page-grid { grid-template-columns: repeat(2, 1fr); }
   .services-panels { grid-template-columns: repeat(2, 1fr); }
   .services-immersive-inner { padding-inline: 7vw; }
+  .about-hero { padding-inline: 7vw; }
+  .about-hero-grid { grid-template-columns: 1.1fr .72fr; }
+  .about-story-grid { grid-template-columns: 1fr 1fr; gap: 8vw; }
+  .about-roles { padding-inline: 7vw; }
+  .about-roles-inner { grid-template-columns: .72fr 1.28fr; gap: 8vw; align-items: start; }
+  .about-coaching { padding-inline: 7vw; }
+  .about-coaching-grid { grid-template-columns: 1fr .72fr; gap: 8vw; }
   .portrait-block { min-height: 0; width: min(100%, 530px); }
   .quote-band { padding: 150px 7vw; }
   .contact-form { padding: 42px; }
