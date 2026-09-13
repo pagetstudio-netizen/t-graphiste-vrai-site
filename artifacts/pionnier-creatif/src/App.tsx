@@ -182,7 +182,7 @@ function Ticker() {
 }
 
 function HomePage() {
-  usePageMeta('Direction artistique indépendante', 'Pionnier Créatif transforme les idées et ambitions en identités visuelles fortes, cohérentes et mémorables.');
+  usePageMeta('Pionnier Créatif — Méd Koyi', 'Pionnier Créatif est le studio de graphisme et direction artistique fondé par Méd Koyi.');
   return (
     <>
       <section className="hero" data-testid="section-hero">
@@ -441,7 +441,7 @@ function ServicesPage() {
 }
 
 function AboutPage() {
-  usePageMeta('À propos', 'Pionnier Créatif est un studio indépendant de direction artistique.');
+  usePageMeta('Méd Koyi — À propos', 'Découvrez Méd Koyi, fondateur et directeur artistique de Pionnier Créatif.');
   return <><section className="case-hero" style={{ background: '#8049fe' }}><div className="case-hero-inner"><span className="eyebrow">À propos / coulisses</span><h1 className="display">Pas un mode<br /><span style={{ color: '#f29200' }}>d’emploi.</span></h1><p>Un regard, une méthode et le goût des projets qui déplacent quelque chose.</p></div></section><section className="section"><div className="section-inner about-layout"><PortraitBlock label="Méd Koyi · direction" detail="2015 — aujourd’hui" /><div className="about-copy"><span className="eyebrow">Le studio</span><p>Pionnier Créatif est né d’une envie simple : remettre du sens, de la précision et du mouvement dans les identités de marque.</p><p className="small-copy">Je m’appelle <strong>Méd Koyi</strong>. Je conçois des identités visuelles, des campagnes et des systèmes qui aident les organisations à prendre une place juste. Je crois au travail bien fait, aux discussions franches et aux détails qui changent tout. Selon les projets, je m’entoure de rédacteurs, photographes, développeurs et autres cerveaux curieux.</p><div className="about-meta"><div><span className="meta-label">Clients rêvés</span><span className="meta-value">Celles et ceux qui osent</span></div><div><span className="meta-label">À côté</span><span className="meta-value">Éditions · musique · objets</span></div></div></div></div></section><section className="section manifesto"><div className="section-inner"><span className="eyebrow">Ce qui compte</span>{['Faire moins, mais mieux.', 'Rester curieux du problème.', 'Ne jamais confondre impact et bruit.'].map((line, index) => <div className="manifesto-row" key={line}><span className="manifesto-num">0{index + 1}</span><span className="manifesto-copy">{line}</span></div>)}</div></section><ContactSection showForm={false} /></>;
 }
 
