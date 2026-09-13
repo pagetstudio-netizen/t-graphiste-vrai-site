@@ -20,6 +20,13 @@ const projectImages = {
   nexora: `${import.meta.env.BASE_URL}nexora-tech.jpg`,
   adeny: `${import.meta.env.BASE_URL}adeny.jpg`,
 };
+const serviceVideos = {
+  logo: 'https://videos.pexels.com/video-files/5928287/5928287-uhd_2160_3840_25fps.mp4',
+  identity: 'https://videos.pexels.com/video-files/6013203/6013203-uhd_4096_2160_24fps.mp4',
+  campaign: 'https://videos.pexels.com/video-files/3125907/3125907-uhd_3840_2160_25fps.mp4',
+  packaging: 'https://videos.pexels.com/video-files/6013203/6013203-uhd_4096_2160_24fps.mp4',
+  communication: 'https://videos.pexels.com/video-files/3125907/3125907-uhd_3840_2160_25fps.mp4',
+};
 
 type Project = {
   slug: string;
@@ -483,11 +490,11 @@ function ProjectsPage() {
 function ServicesPage() {
   usePageMeta('Services', 'Positionnement, identité visuelle, direction artistique et accompagnement de marques ambitieuses.');
   const services = [
-    ['01', 'Conception de logo', 'Créer un signe fort, lisible et mémorable pour donner un visage clair à votre activité.', projectImages.nexora],
-    ['02', 'Conception d’identité visuelle', 'Construire un univers cohérent avec une palette, une typographie et des règles prêtes à être utilisées.', projectImages.adeny],
-    ['03', 'Visuels de campagnes publicitaires', 'Imaginer des visuels qui attirent l’attention, racontent une idée et donnent envie de passer à l’action.', projectImages.solree],
-    ['04', 'Réalisation de packaging', 'Donner à vos produits une présence désirable, reconnaissable et adaptée à chaque support.', projectImages.kondoSacs],
-    ['05', 'Communication visuelle', 'Décliner votre message sur les supports qui font vivre votre marque au quotidien.', projectImages.kondoTextile],
+    ['01', 'Conception de logo', 'Créer un signe fort, lisible et mémorable pour donner un visage clair à votre activité.', serviceVideos.logo],
+    ['02', 'Conception d’identité visuelle', 'Construire un univers cohérent avec une palette, une typographie et des règles prêtes à être utilisées.', serviceVideos.identity],
+    ['03', 'Visuels de campagnes publicitaires', 'Imaginer des visuels qui attirent l’attention, racontent une idée et donnent envie de passer à l’action.', serviceVideos.campaign],
+    ['04', 'Réalisation de packaging', 'Donner à vos produits une présence désirable, reconnaissable et adaptée à chaque support.', serviceVideos.packaging],
+    ['05', 'Communication visuelle', 'Décliner votre message sur les supports qui font vivre votre marque au quotidien.', serviceVideos.communication],
   ];
 
   return <>
@@ -503,8 +510,11 @@ function ServicesPage() {
         <span className="eyebrow">Ce que je peux créer pour vous</span>
         <h2 className="services-page-title">Des solutions visuelles pensées pour <em>avancer.</em></h2>
         <div className="services-grid services-page-grid">
-          {services.map(([number, title, copy, image]) => (
-            <article className="service service-image-card" key={number} style={{ backgroundImage: `url(${image})` }}>
+          {services.map(([number, title, copy, video]) => (
+            <article className="service service-image-card" key={number}>
+              <video className="service-card-video" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
+                <source src={video} type="video/mp4" />
+              </video>
               <span className="service-image-overlay" aria-hidden="true" />
               <div className="service-card-content">
                 <span className="service-no">{number}</span>
