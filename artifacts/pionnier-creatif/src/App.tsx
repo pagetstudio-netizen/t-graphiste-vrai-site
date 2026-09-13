@@ -195,7 +195,7 @@ function HomePage() {
     <>
       <section className="hero" data-testid="section-hero">
         <div className="hero-grid">
-          <div className="hero-kicker reveal"><span>Studio indépendant</span><span>© 2024</span></div>
+          <div className="hero-kicker reveal"><span>Méd Koyi</span><span>Founder of Pionnier Créatif</span></div>
           <h1 className="hero-title display reveal delay-1"><span>Je crée</span><span className="outline">des chemins</span><span>visuels.</span></h1>
           <div className="hero-bottom reveal delay-2">
             <p className="hero-copy">Je transforme les idées en identités visuelles qui ont du sens.</p>
