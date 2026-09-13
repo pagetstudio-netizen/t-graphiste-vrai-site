@@ -245,7 +245,8 @@ button { cursor: pointer; }
 .project-gallery-art.red, .project-gallery-card.red .project-gallery-art { background: #e00815; color: #fffdf6; }
 .project-gallery-art.violet, .project-gallery-card.violet .project-gallery-art { background: #8049fe; color: #fffdf6; }
 .project-gallery-art.cream, .project-gallery-card.cream .project-gallery-art { background: #fffdf6; color: #111; }
-.project-gallery-art::before { content: ''; position: absolute; inset: 0; z-index: -1; opacity: .24; background-image: radial-gradient(circle, currentColor 1px, transparent 1px); background-size: 18px 18px; mask-image: linear-gradient(to bottom, #000, transparent 84%); }
+.project-gallery-art::before { display: none; }
+.project-gallery-art::after { display: none; }
 .gallery-art-meta, .gallery-art-client { position: relative; z-index: 3; display: inline-block; font-family: var(--app-font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
 .gallery-art-client { float: right; max-width: 52%; text-align: right; }
 .gallery-art-frame { position: absolute; z-index: 1; display: block; border: 1px solid currentColor; opacity: .7; transform: rotate(-10deg); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
