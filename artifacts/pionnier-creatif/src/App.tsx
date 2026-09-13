@@ -482,7 +482,43 @@ function ProjectsPage() {
 
 function ServicesPage() {
   usePageMeta('Services', 'Positionnement, identité visuelle, direction artistique et accompagnement de marques ambitieuses.');
-  return <><section className="case-hero"><div className="case-hero-inner"><span className="eyebrow">Services / méthode</span><h1 className="display">Donner une<br /><span className="outline">direction.</span></h1><p>Pas de formule préfabriquée. Une méthode sur mesure pour faire émerger ce qui rend votre projet impossible à confondre.</p></div></section><section className="section"><div className="section-inner"><span className="eyebrow">Un projet, quatre mouvements</span><div className="services-grid">{[['01', 'Éclairer', 'Un atelier de départ pour aligner ambition, audience, contexte et intuition.'], ['02', 'Structurer', 'Un territoire de marque, une idée forte et les règles du jeu qui la rendent solide.'], ['03', 'Déployer', 'Des identités et directions artistiques pensées pour les vrais supports, pas seulement pour le mockup.'], ['04', 'Transmettre', 'Un système documenté et des outils simples pour continuer à faire vivre la marque.']].map(([n, title, copy]) => <article className="service" key={n}><span className="service-no">{n}</span><h3>{title}</h3><p>{copy}</p></article>)}</div></div></section><section className="quote-band"><blockquote>Une identité forte n’explique pas tout.<br /><span>Elle donne envie d’aller voir.</span></blockquote></section><ContactSection showForm={false} /></>;
+  const services = [
+    ['01', 'Conception de logo', 'Créer un signe fort, lisible et mémorable pour donner un visage clair à votre activité.', projectImages.nexora],
+    ['02', 'Conception d’identité visuelle', 'Construire un univers cohérent avec une palette, une typographie et des règles prêtes à être utilisées.', projectImages.adeny],
+    ['03', 'Visuels de campagnes publicitaires', 'Imaginer des visuels qui attirent l’attention, racontent une idée et donnent envie de passer à l’action.', projectImages.solree],
+    ['04', 'Réalisation de packaging', 'Donner à vos produits une présence désirable, reconnaissable et adaptée à chaque support.', projectImages.kondoSacs],
+    ['05', 'Communication visuelle', 'Décliner votre message sur les supports qui font vivre votre marque au quotidien.', projectImages.kondoTextile],
+  ];
+
+  return <>
+    <section className="case-hero">
+      <div className="case-hero-inner">
+        <span className="eyebrow">Services / création visuelle</span>
+        <h1 className="display">Donner une<br /><span className="outline">forme.</span></h1>
+        <p>De l’idée au support final, Pionnier Créatif conçoit les éléments visuels qui rendent votre activité claire, crédible et impossible à confondre.</p>
+      </div>
+    </section>
+    <section className="section">
+      <div className="section-inner">
+        <span className="eyebrow">Ce que je peux créer pour vous</span>
+        <h2 className="services-page-title">Des solutions visuelles pensées pour <em>avancer.</em></h2>
+        <div className="services-grid services-page-grid">
+          {services.map(([number, title, copy, image]) => (
+            <article className="service service-image-card" key={number} style={{ backgroundImage: `url(${image})` }}>
+              <span className="service-image-overlay" aria-hidden="true" />
+              <div className="service-card-content">
+                <span className="service-no">{number}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+    <section className="quote-band"><blockquote>Une identité forte n’explique pas tout.<br /><span>Elle donne envie d’aller voir.</span></blockquote></section>
+    <ContactSection showForm={false} />
+  </>;
 }
 
 function AboutPage() {
