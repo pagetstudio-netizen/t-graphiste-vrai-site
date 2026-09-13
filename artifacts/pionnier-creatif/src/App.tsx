@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type FormEvent, type MouseEvent, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent as ReactKeyboardEvent, type MouseEvent, type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ArrowDownRight, ArrowLeft, ArrowUpRight, Check, FilePlus2, Mail, Menu, MessageCircle, Search, X } from 'lucide-react';
 import { ErrorBoundary } from '@/components/error-boundary';
@@ -21,6 +21,9 @@ const projectImages = {
   solree: `${import.meta.env.BASE_URL}solree-event.png`,
   nexora: `${import.meta.env.BASE_URL}nexora-tech.jpg`,
   adeny: `${import.meta.env.BASE_URL}adeny.jpg`,
+  kalima: `${import.meta.env.BASE_URL}projet-kalima.jpg`,
+  evenementiels: `${import.meta.env.BASE_URL}projet-evenementiels.jpg`,
+  differentsTravaux: `${import.meta.env.BASE_URL}projet-differents-travaux.jpg`,
 };
 const serviceVideos = {
   logo: 'https://videos.pexels.com/video-files/5928287/5928287-hd_1080_1920_25fps.mp4',
@@ -97,6 +100,45 @@ const projects: Project[] = [
     tone: 'cream',
     result: 'Une campagne qui a fait grimper les réservations de 31% en deux éditions.',
     images: [projectImages.adeny],
+  },
+  {
+    slug: 'kalima-packaging',
+    number: '05',
+    name: 'Kalima',
+    client: 'Création packaging',
+    year: '2026',
+    category: 'Packaging · Campagne',
+    summary: 'Construire un territoire packaging gourmand, énergique et immédiatement identifiable pour une gamme d’épices.',
+    tags: ['Packaging', 'Campagne', 'Alimentaire'],
+    tone: 'red',
+    result: 'Une direction visuelle chaleureuse qui donne au produit une présence forte en rayon et dans les contenus.',
+    images: [projectImages.kalima],
+  },
+  {
+    slug: 'crea-evenementiels',
+    number: '06',
+    name: 'Créa, événementiels',
+    client: 'Direction artistique événementielle',
+    year: '2026',
+    category: 'Événementiel · Affiche',
+    summary: 'Créer des affiches qui donnent envie de sortir, de se retrouver et de vivre chaque rendez-vous comme une expérience.',
+    tags: ['Affiche', 'Événementiel', 'Social'],
+    tone: 'orange',
+    result: 'Une série de visuels conçus pour attirer le regard et faire circuler l’énergie des événements.',
+    images: [projectImages.evenementiels],
+  },
+  {
+    slug: 'differents-travaux',
+    number: '07',
+    name: 'Différents travaux',
+    client: 'Sélection graphique',
+    year: '2026',
+    category: 'Portfolio · Sélection',
+    summary: 'Un dernier regard sur des travaux variés, réalisés avec la même envie de donner une forme juste aux idées.',
+    tags: ['Sélection', 'Graphisme', 'Direction artistique'],
+    tone: 'red',
+    result: 'Des explorations différentes réunies par une même signature : créer avec intention.',
+    images: [projectImages.differentsTravaux],
   },
 ];
 
@@ -346,19 +388,19 @@ function ProjectVisual({ project }: { project: Project }) {
 }
 
 function ProjectGalleryCard({ project, onOpen }: { project: Project; onOpen: (project: Project) => void }) {
+  const open = () => onOpen(project);
+  const handleKeyDown = (event: ReactKeyboardEvent<HTMLElement>) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      open();
+    }
+  };
   return (
-    <article className={`project-gallery-card ${project.tone}`}>
-      <button type="button" className="project-gallery-image-button" onClick={() => onOpen(project)} aria-label={`Voir le visuel de ${project.name}`} data-testid={`button-gallery-${project.slug}`}>
-        <ProjectVisual project={project} />
-      </button>
-      <div className="project-gallery-body">
+    <article className={`project-gallery-card ${project.tone}`} onClick={open} onKeyDown={handleKeyDown} role="button" tabIndex={0} aria-label={`Ouvrir le projet ${project.name}`} data-testid={`card-gallery-${project.slug}`}>
+      <ProjectVisual project={project} />
+      <div className="project-gallery-caption">
         <span className="project-gallery-category">{project.category}</span>
         <h2 className="project-gallery-name">{project.name}</h2>
-        <div className="project-gallery-actions">
-          <button type="button" className="btn btn-red gallery-view-button" onClick={() => onOpen(project)} data-testid={`button-view-project-${project.slug}`}>
-            Voir ce projet <ArrowUpRight size={16} />
-          </button>
-        </div>
       </div>
     </article>
   );
