@@ -13,6 +13,8 @@ const WHATSAPP_LINK = 'https://wa.me/22897899364';
 const TIKTOK_LINK = 'https://www.tiktok.com/@md.koyi.graphiste?is_from_webapp=1&sender_device=pc';
 const logoImage = `${import.meta.env.BASE_URL}pionnier-logo.png`;
 const portraitImage = `${import.meta.env.BASE_URL}pionnier-portrait.png`;
+const aboutPosterImage = `${import.meta.env.BASE_URL}med-koyi-poster.jpg`;
+const aboutProfileImage = `${import.meta.env.BASE_URL}med-koyi-profile.jpg`;
 const projectImages = {
   kondoTextile: `${import.meta.env.BASE_URL}kondo-textile.jpg`,
   kondoSacs: `${import.meta.env.BASE_URL}kondo-sacs.jpg`,
@@ -581,7 +583,59 @@ function ServicesPage() {
 
 function AboutPage() {
   usePageMeta('Méd Koyi — À propos', 'Découvrez Méd Koyi, fondateur et directeur artistique de Pionnier Créatif.');
-  return <><section className="case-hero" style={{ background: '#8049fe' }}><div className="case-hero-inner"><span className="eyebrow">À propos / coulisses</span><h1 className="display">Pas un mode<br /><span style={{ color: '#f29200' }}>d’emploi.</span></h1><p>Un regard, une méthode et le goût des projets qui déplacent quelque chose.</p></div></section><section className="section"><div className="section-inner about-layout"><PortraitBlock label="Méd Koyi · direction" detail="2015 — aujourd’hui" /><div className="about-copy"><span className="eyebrow">Le studio</span><p>Pionnier Créatif est né d’une envie simple : remettre du sens, de la précision et du mouvement dans les identités de marque.</p><p className="small-copy">Je m’appelle <strong>Méd Koyi</strong>. Je conçois des identités visuelles, des campagnes et des systèmes qui aident les organisations à prendre une place juste. Je crois au travail bien fait, aux discussions franches et aux détails qui changent tout. Selon les projets, je m’entoure de rédacteurs, photographes, développeurs et autres cerveaux curieux.</p><div className="about-meta"><div><span className="meta-label">Clients rêvés</span><span className="meta-value">Celles et ceux qui osent</span></div><div><span className="meta-label">À côté</span><span className="meta-value">Éditions · musique · objets</span></div></div></div></div></section><section className="section manifesto"><div className="section-inner"><span className="eyebrow">Ce qui compte</span>{['Faire moins, mais mieux.', 'Rester curieux du problème.', 'Ne jamais confondre impact et bruit.'].map((line, index) => <div className="manifesto-row" key={line}><span className="manifesto-num">0{index + 1}</span><span className="manifesto-copy">{line}</span></div>)}</div></section><ContactSection showForm={false} /></>;
+  const roles = [
+    ['01', 'Graphiste', 'Créer des identités visuelles modernes, stratégiques et cohérentes, pensées pour raconter une histoire et transmettre une émotion.'],
+    ['02', 'Technicien synthé', 'Associer la précision technique, la curiosité et la pratique pour construire des solutions visuelles solides, du concept au support final.'],
+    ['03', 'Formateur', 'Partager les outils, les méthodes et les réflexes qui permettent à chacun de progresser avec plus de confiance et d’autonomie.'],
+  ];
+  return <>
+    <section className="about-hero">
+      <div className="about-hero-grid">
+        <div className="about-hero-copy">
+          <span className="eyebrow">À propos / Méd Koyi</span>
+          <h1 className="display">Créer.<br /><span>Transmettre.</span><br />Faire évoluer.</h1>
+          <p>Graphiste, formateur et technicien synthé, je construis des identités visuelles qui donnent une direction claire aux idées.</p>
+          <div className="about-hero-tags"><span>Graphiste</span><span>Formateur</span><span>Coach en développement personnel</span></div>
+        </div>
+        <figure className="about-poster">
+          <img src={aboutPosterImage} alt="Portrait de Méd Koyi, graphiste et formateur" />
+          <figcaption><span>01 / Profil</span><span>Lomé, Togo</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section className="section about-story">
+      <div className="section-inner about-story-grid">
+        <div className="about-story-heading">
+          <span className="eyebrow">Le parcours</span>
+          <h2 className="section-title display">Un visuel réussi ne se contente pas d’être <em>beau.</em></h2>
+          <span className="about-statement">Il raconte quelque chose.</span>
+        </div>
+        <div className="about-story-copy">
+          <p>Je suis <strong>Méd Koyi</strong>, la personne derrière Pionnier Créatif. Je crois qu’une image doit porter du sens, créer une connexion et aider une marque à prendre sa place.</p>
+          <p>Formé en infographie, je conçois des supports qui mêlent esthétique, cohérence et impact. Mon travail s’est construit entre la création, la transmission et l’accompagnement de celles et ceux qui veulent avancer.</p>
+          <div className="about-facts"><div><strong>2015 — aujourd’hui</strong><span>Créer, apprendre, transmettre</span></div><div><strong>Lomé · Togo</strong><span>Disponible partout à distance</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section className="about-roles" aria-labelledby="about-roles-title">
+      <div className="about-roles-inner">
+        <div className="about-section-intro"><span className="eyebrow">02 / Les casquettes</span><h2 id="about-roles-title" className="display">Trois façons<br /><span>d’avancer.</span></h2></div>
+        <div className="about-role-list">{roles.map(([number, title, copy], index) => <article className={`about-role about-role-${index + 1}`} key={title}><span className="about-role-number">{number}</span><div><h3>{title}</h3><p>{copy}</p></div><ArrowUpRight size={22} /></article>)}</div>
+      </div>
+    </section>
+
+    <section className="about-coaching">
+      <div className="about-coaching-grid">
+        <div className="about-coaching-copy"><span className="eyebrow">03 / Transmission</span><h2 className="display">Le design avec du sens.<br /><em>La transmission comme moteur.</em></h2><p>J’ai eu l’opportunité de transmettre mon savoir-faire au sein de l’agence KONDO DESIGN et d’accompagner des apprenants débutants dans leur montée en compétence.</p><p>Le coaching en développement personnel prolonge cette envie : créer un espace de progression, de persévérance et d’évolution constante.</p><ButtonLink href="/contact" variant="light">Échanger avec Méd</ButtonLink></div>
+        <figure className="about-profile-visual"><img src={aboutProfileImage} alt="Méd Koyi lors d’une intervention et présentation de son parcours" /><figcaption>Partager ce que l’on apprend, pour aider d’autres idées à prendre forme.</figcaption></figure>
+      </div>
+    </section>
+
+    <section className="section manifesto"><div className="section-inner"><span className="eyebrow">Ce qui compte</span>{['Faire moins, mais mieux.', 'Rester curieux du problème.', 'Ne jamais confondre impact et bruit.'].map((line, index) => <div className="manifesto-row" key={line}><span className="manifesto-num">0{index + 1}</span><span className="manifesto-copy">{line}</span></div>)}</div></section>
+    <ContactSection showForm={false} />
+  </>;
 }
 
 function ContactPage() {
