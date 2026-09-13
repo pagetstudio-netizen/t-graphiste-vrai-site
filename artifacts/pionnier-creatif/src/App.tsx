@@ -278,7 +278,7 @@ function PageTransition({ location }: { location: string }) {
     if (previousLocation.current === location) return;
     previousLocation.current = location;
     setIsVisible(true);
-    const timer = window.setTimeout(() => setIsVisible(false), 720);
+    const timer = window.setTimeout(() => setIsVisible(false), 1400);
     return () => window.clearTimeout(timer);
   }, [location]);
 
