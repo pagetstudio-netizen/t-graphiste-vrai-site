@@ -23,7 +23,6 @@ const projectImages = {
   adeny: `${import.meta.env.BASE_URL}adeny.jpg`,
   kalima: `${import.meta.env.BASE_URL}projet-kalima.jpg`,
   evenementiels: `${import.meta.env.BASE_URL}projet-evenementiels.jpg`,
-  differentsTravaux: `${import.meta.env.BASE_URL}projet-differents-travaux.jpg`,
 };
 const serviceVideos = {
   logo: 'https://videos.pexels.com/video-files/5928287/5928287-hd_1080_1920_25fps.mp4',
@@ -126,19 +125,6 @@ const projects: Project[] = [
     tone: 'orange',
     result: 'Une série de visuels conçus pour attirer le regard et faire circuler l’énergie des événements.',
     images: [projectImages.evenementiels],
-  },
-  {
-    slug: 'differents-travaux',
-    number: '07',
-    name: 'Différents travaux',
-    client: 'Sélection graphique',
-    year: '2026',
-    category: 'Portfolio · Sélection',
-    summary: 'Un dernier regard sur des travaux variés, réalisés avec la même envie de donner une forme juste aux idées.',
-    tags: ['Sélection', 'Graphisme', 'Direction artistique'],
-    tone: 'red',
-    result: 'Des explorations différentes réunies par une même signature : créer avec intention.',
-    images: [projectImages.differentsTravaux],
   },
 ];
 
