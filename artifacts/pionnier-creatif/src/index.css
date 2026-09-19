@@ -223,11 +223,12 @@ button { cursor: pointer; }
 .intro-aside { align-self: center; justify-self: center; max-width: 300px; padding: 22px; background: #8049fe; color: #fffdf6; text-align: center; }
 .intro-aside p { margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px; line-height: 1.12; }
 .intro-aside .mini-meta { display: block; margin-top: 26px; font-family: var(--app-font-mono); font-size: 10px; text-transform: uppercase; }
-.manifesto { border-top: 1px solid #111; border-bottom: 1px solid #111; }
+.manifesto { border-top: 0; border-bottom: 0; }
 .manifesto-row { display: grid; gap: 12px; justify-items: center; padding: 18px 0; border-bottom: 1px solid rgba(17,17,17,.25); text-align: center; }
-.manifesto-row:last-child { border-bottom: 0; }
+.manifesto-row, .manifesto-row:last-child { border-bottom: 0; }
 .manifesto-num { color: #e00815; font-family: var(--app-font-mono); font-size: 12px; }
 .manifesto-copy { font-family: 'Space Grotesk', sans-serif; font-size: clamp(23px, 3vw, 38px); line-height: 1; letter-spacing: -.05em; }
+.manifesto-copy em { color: #f29200; font-style: normal; }
 
 .dark-section { background: #111; color: #fffdf6; }
 .dark-section .eyebrow::before { background: #f29200; }

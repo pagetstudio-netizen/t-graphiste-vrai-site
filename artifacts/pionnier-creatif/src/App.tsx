@@ -351,10 +351,10 @@ function HomePage() {
       <section className="section manifesto" data-testid="section-manifesto">
         <div className="section-inner">
           {[
-            ['01', 'Clarifier ce qui vous rend singulier.'],
-            ['02', 'Donner une forme à votre ambition.'],
-            ['03', 'Construire un système qui tient dans le temps.'],
-          ].map(([number, copy]) => <div className="manifesto-row" key={number}><span className="manifesto-num">{number}</span><span className="manifesto-copy">{copy}</span></div>)}
+            { number: '01', copy: <>Clarifier ce qui vous rend singulier.</> },
+            { number: '02', copy: <>Donner une <em>forme</em> à votre ambition.</> },
+            { number: '03', copy: <>Construire un système qui tient dans le temps.</> },
+          ].map(({ number, copy }) => <div className="manifesto-row" key={number}><span className="manifesto-num">{number}</span><span className="manifesto-copy">{copy}</span></div>)}
         </div>
       </section>
       <ProjectsPreview />
