@@ -330,8 +330,7 @@ function HomePage() {
         <div className="home-intro-inner">
           <span className="eyebrow">01 / La vision</span>
           <h2 className="home-intro-title">Les bonnes idées méritent plus qu’un joli <em>logo.</em></h2>
-          <p className="home-intro-copy">Une marque n’est pas une façade. C’est une façon de prendre position, de créer du lien et d’avancer avec justesse.</p>
-          <span className="home-intro-star" aria-hidden="true">*</span>
+           <p className="home-intro-copy">Une marque n’est pas une façade. C’est une façon de prendre position, de créer du lien et d’avancer avec justesse.</p>
         </div>
       </section>
       <Ticker />
