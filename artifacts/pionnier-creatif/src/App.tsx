@@ -644,7 +644,7 @@ function AboutPage() {
   usePageMeta('Méd Koyi — À propos', 'Découvrez Méd Koyi, fondateur et directeur artistique de Pionnier Créatif.');
   const roles = [
     ['01', 'Graphiste', 'Créer des identités visuelles modernes, stratégiques et cohérentes, pensées pour raconter une histoire et transmettre une émotion.'],
-    ['02', 'Technicien synthé', 'Associer la précision technique, la curiosité et la pratique pour construire des solutions visuelles solides, du concept au support final.'],
+    ['02', 'Expert en IA générative', 'Explorer, prototyper et produire des visuels avec l’IA générative, tout en gardant une intention créative claire et personnelle.'],
     ['03', 'Formateur', 'Partager les outils, les méthodes et les réflexes qui permettent à chacun de progresser avec plus de confiance et d’autonomie.'],
   ];
   return <>
@@ -653,11 +653,11 @@ function AboutPage() {
         <div className="about-hero-copy">
           <span className="eyebrow">À propos / Méd Koyi</span>
           <h1 className="display">Créer.<br /><span>Transmettre.</span><br />Faire évoluer.</h1>
-          <p>Graphiste, formateur et technicien synthé, je construis des identités visuelles qui donnent une direction claire aux idées.</p>
+          <p>Graphiste, expert en IA générative et formateur, je construis des identités visuelles qui donnent une direction claire aux idées.</p>
           <div className="about-hero-tags"><span>Graphiste</span><span>Formateur</span><span>Coach en développement personnel</span></div>
         </div>
         <figure className="about-poster">
-          <img src={aboutPosterImage} alt="Portrait de Méd Koyi, graphiste et formateur" />
+          <img src={aboutPosterImage} alt="Portrait de Méd Koyi, graphiste, expert en IA générative et formateur" />
           <figcaption><span>01 / Profil</span><span>Lomé, Togo</span></figcaption>
         </figure>
       </div>
