@@ -21,7 +21,7 @@ const projectImages = {
   solree: `${import.meta.env.BASE_URL}solree-event.png`,
   nexora: `${import.meta.env.BASE_URL}nexora-tech.jpg`,
   adeny: `${import.meta.env.BASE_URL}adeny.jpg`,
-  kalima: `${import.meta.env.BASE_URL}projet-kalima.jpg`,
+  kalima: `${import.meta.env.BASE_URL}projet-kalima-packaging.png`,
   evenementiels: `${import.meta.env.BASE_URL}projet-evenementiels.jpg`,
 };
 const serviceVideos = {
