@@ -13,7 +13,7 @@ const WHATSAPP_LINK = 'https://wa.me/22897899364';
 const TIKTOK_LINK = 'https://www.tiktok.com/@md.koyi.graphiste?is_from_webapp=1&sender_device=pc';
 const logoImage = `${import.meta.env.BASE_URL}pionnier-logo.png`;
 const portraitImage = `${import.meta.env.BASE_URL}pionnier-portrait.png`;
-const aboutPosterImage = `${import.meta.env.BASE_URL}med-koyi-poster.jpg`;
+const aboutPortraitImage = `${import.meta.env.BASE_URL}med-koyi-about.jpg`;
 const aboutProfileImage = `${import.meta.env.BASE_URL}med-koyi-profile.jpg`;
 const projectImages = {
   kondoTextile: `${import.meta.env.BASE_URL}kondo-textile.jpg`,
@@ -641,10 +641,7 @@ function AboutPage() {
           <p>Graphiste, expert en IA générative et formateur, je construis des identités visuelles qui donnent une direction claire aux idées.</p>
           <div className="about-hero-tags"><span>Graphiste</span><span>Formateur</span><span>Coach en développement personnel</span></div>
         </div>
-        <figure className="about-poster">
-          <img src={aboutPosterImage} alt="Portrait de Méd Koyi, graphiste, expert en IA générative et formateur" />
-          <figcaption><span>01 / Profil</span><span>Lomé, Togo</span></figcaption>
-        </figure>
+        <img className="about-portrait" src={aboutPortraitImage} alt="Portrait de Méd Koyi" />
       </div>
     </section>
 
