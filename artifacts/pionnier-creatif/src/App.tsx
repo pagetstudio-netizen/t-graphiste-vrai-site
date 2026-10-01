@@ -113,7 +113,7 @@ const projects: Project[] = [
     tags: ['Événementiel', 'Affiche', 'Campagne'],
     tone: 'red',
     result: 'Une série d’affiches conçues pour annoncer des événements et attirer l’attention.',
-    images: [projectImages.eventPosters, projectImages.evenementiels],
+    images: [projectImages.eventPosters],
   },
 ];
 
