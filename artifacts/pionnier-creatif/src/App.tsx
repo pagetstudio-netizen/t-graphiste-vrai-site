@@ -644,7 +644,7 @@ function AboutPage() {
         <div className="about-story-copy">
           <p>Je suis <strong>Méd Koyi</strong>, la personne derrière Pionnier Créatif. Je crois qu’une image doit porter du sens, créer une connexion et aider une marque à prendre sa place.</p>
           <p>Formé en infographie, je conçois des supports qui mêlent esthétique, cohérence et impact. Mon travail s’est construit entre la création, la transmission et l’accompagnement de celles et ceux qui veulent avancer.</p>
-          <div className="about-facts"><div><strong>2015 — aujourd’hui</strong><span>Créer, apprendre, transmettre</span></div><div><strong>Lomé · Togo</strong><span>Disponible partout à distance</span></div></div>
+          <div className="about-facts"><div><strong>2024 — aujourd’hui</strong><span>Créer, apprendre, transmettre</span></div><div><strong>Lomé · Togo</strong><span>Disponible partout à distance</span></div></div>
         </div>
       </div>
     </section>
