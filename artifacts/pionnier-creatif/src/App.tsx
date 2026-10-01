@@ -21,7 +21,7 @@ const projectImages = {
   solree: `${import.meta.env.BASE_URL}solree-event.png`,
   nexora: `${import.meta.env.BASE_URL}nexora-tech.jpg`,
   adeny: `${import.meta.env.BASE_URL}adeny.jpg`,
-  kalima: `${import.meta.env.BASE_URL}projet-kalima-packaging.png`,
+  eventPosters: `${import.meta.env.BASE_URL}projet-kalima-packaging.png`,
   evenementiels: `${import.meta.env.BASE_URL}projet-evenementiels.jpg`,
 };
 const serviceVideos = {
@@ -103,15 +103,15 @@ const projects: Project[] = [
   {
     slug: 'kalima-packaging',
     number: '05',
-    name: 'Kalima',
-    client: 'Création packaging',
+    name: 'Créa Événementiel',
+    client: 'Direction artistique événementielle',
     year: '2026',
-    category: 'Packaging · Campagne',
-    summary: 'Construire un territoire packaging gourmand, énergique et immédiatement identifiable pour une gamme d’épices.',
-    tags: ['Packaging', 'Campagne', 'Alimentaire'],
+    category: 'Événementiel · Affiche',
+    summary: 'Créer des visuels événementiels marquants pour promouvoir des soirées et leurs temps forts.',
+    tags: ['Événementiel', 'Affiche', 'Campagne'],
     tone: 'red',
-    result: 'Une direction visuelle chaleureuse qui donne au produit une présence forte en rayon et dans les contenus.',
-    images: [projectImages.kalima],
+    result: 'Une série d’affiches conçues pour annoncer des événements et attirer l’attention.',
+    images: [projectImages.eventPosters],
   },
   {
     slug: 'crea-evenementiels',
