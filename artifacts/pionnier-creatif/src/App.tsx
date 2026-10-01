@@ -584,7 +584,7 @@ function ServicesPage() {
     <section className="case-hero">
       <div className="case-hero-inner">
         <span className="eyebrow">Services / création visuelle</span>
-        <h1 className="display">Donner une<br /><span className="outline">forme.</span></h1>
+        <h1 className="display">Donner une<br /><span>forme.</span></h1>
         <p>De l’idée au support final, Pionnier Créatif conçoit les éléments visuels qui rendent votre activité claire, crédible et impossible à confondre.</p>
       </div>
     </section>
